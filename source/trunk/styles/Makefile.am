@@ -2,5 +2,7 @@
 
 AUTOMAKE_OPTIONS = 1.8
 
-dist_pkgdata_DATA = \
+stylesdir = $(pkgdatadir)/styles
+
+dist_styles_DATA = \
 	text-simple.xsl
