@@ -79,6 +79,10 @@ div#body {
 	margin-right: 0em;
 }
 
+#body div.margin p {
+	margin-left: 0em;
+}
+
 #body ol,
 #body ul {
 	margin-left: 10em;
