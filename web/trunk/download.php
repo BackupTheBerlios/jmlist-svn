@@ -32,7 +32,7 @@
 	h3( 'Version 0.1.0 (beta)' );
 
 	tag( 'p', array(),
-		a( 'jmlist-0.1.0.tar.gz', 'http://download.berlios.de/jmlist/jmlist-0.1.0.tar.gz' ). tag( 'br' ).
+		a( 'jmlist-0.1.0.tar.gz', 'http://download.berlios.de/jmlist/jmlist-0.1.0.tar.gz' ). txttag( 'br' ).
 		a( 'Release Notes', 'http://developer.berlios.de/project/shownotes.php?release_id=5187' )
 	);
 
