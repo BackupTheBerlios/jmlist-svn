@@ -48,6 +48,7 @@
 	);
 
 	open( 'ol', array() );
+	tag( 'li', array(), "Internally transform output through $_XSL." );
 	tag( 'li', array(), "Reading of MPEG Layer 1, 2 and 3 ($_MP3) formats." );
 	tag( 'li', array(), "Reading of ID3 v1 and v2 tags." );
 	tag( 'li', array(), "Full Unicode support." );
@@ -59,7 +60,6 @@
 	);
 
 	open( 'ol' );
-	tag( 'li', array(), "Internally transform output through $_XSL." );
 	tag( 'li', array(), "Detect and parse data from tags based on an user-provided list of possible character encodings." );
 	tag( 'li', array(), "Properly support files > 2GiB." );
 	tag( 'li', array(), "National Language (NLS, i18n) support" );
