@@ -11,12 +11,12 @@ echo "*** Running \`aclocal -I m4'..."
 aclocal -I m4
 
 echo
-echo "*** Running \`autoheader'..."
-autoheader
-
-echo
 echo "*** Running \`automake --gnu --add-missing'..."
 automake --gnu --add-missing
+
+echo
+echo "*** Running \`autoheader'..."
+autoheader
 
 echo
 echo "*** Running \`autoconf'..."
