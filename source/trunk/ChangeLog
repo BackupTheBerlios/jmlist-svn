@@ -1,6 +1,11 @@
 ChangeLog for jMList - Media file listing generator
 ===================================================
 
+** 2005 Apr  3 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * configure.ac, file.c, main.c:
+      Large file support.
+
+
 [ Version 0.1.0 ]
 ** 2005 Mar 26 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    ### Version 0.1.0 released.

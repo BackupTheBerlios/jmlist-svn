@@ -39,10 +39,7 @@ AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
 
-AC_PATH_PROG([XSLTPROC], [xsltproc])
-if test "x$XSLTPROC" == "x"; then
-    AC_MSG_ERROR([xsltproc (part of libxslt) not found on \$PATH.])
-fi
+AC_SYS_LARGEFILE
 
 
 ### Checks for libraries.
@@ -58,6 +55,11 @@ AM_CONDITIONAL([HAVE_LIBPOPT], [test _$ac_cv_lib_popt_poptGetContext = _yes])
 # libxslt (http://xmlsoft.org/XSLT/)
 pkg_modules="glib-2.0 >= 2.4.0 libxml-2.0 >= 2.6.0 libxslt >= 1.1.0"
 PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
+
+AC_PATH_PROG([XSLTPROC], [xsltproc])
+if test "x$XSLTPROC" == "x"; then
+    AC_MSG_ERROR([xsltproc (part of libxslt) not found on \$PATH.])
+fi
 
 # id3lib (http://id3tag.sourceforge.net/)
 ID3LIB_CHECK([3.8.0])
@@ -107,6 +109,7 @@ AC_STRUCT_TM
 
 ### Checks for library functions.
 AC_FUNC_ALLOCA
+AC_FUNC_FSEEKO
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 AC_FUNC_STAT

@@ -108,6 +108,8 @@ main(int argc, char **argv)
 
     file_parser_init_all();
 
+    log_debug("sizeof(off_t) = %d\n", sizeof(off_t));
+
 
     /* Parse command-line arguments. */
     optcon = poptGetContext(NULL, argc, (const char**) argv, options, 0);

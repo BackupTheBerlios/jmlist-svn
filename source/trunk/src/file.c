@@ -66,15 +66,19 @@ file_proc(const gchar *real_path,
         xmlNewProp(file_node, "name", file_name_utf8);
 
         if ((fp = fopen(real_path, "rb")) != NULL) {
-            glong file_size;
+            guint64 file_size;
             gchar size_string[64];
 
             /* retrieve file size */
-            /* TODO: support 64-bit file sizes */
+#if HAVE_FSEEKO
+            fseeko(fp, 0, SEEK_END);
+            file_size = ftello(fp);
+#else
             fseek(fp, 0, SEEK_END);
             file_size = ftell(fp);
+#endif
 
-            g_snprintf(size_string, sizeof size_string, "%ld", file_size);
+            g_snprintf(size_string, sizeof size_string, "%" G_GUINT64_FORMAT, file_size);
             xmlNewProp(file_node, "size", size_string);
 
             /* parse (or at least try to) the file */
