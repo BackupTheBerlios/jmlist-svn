@@ -141,7 +141,7 @@
 		open( 'head' );
 		tag( 'meta', array(
 			'http-equiv'	=> 'Content-Type',
-			'content'		=> 'application/xhtml+xml',
+			'content'		=> 'text/html',
 			'charset'		=> $HTML_CHARSET
 		) );
 		tag( 'meta', array(

@@ -8,19 +8,14 @@
 
 	open( 'div', array( 'id' => 'body' ) );
 
-	h2( 'General Mailing List' );
+	h2( 'General Discussion' );
 
 	$_jMList = txttag( 'span', array( 'class' => 'jmlist' ), 'jMList' );
 
 	tag( 'p', array(),
-		"While $_jMList is a small project, a single mailing list is more ".
-		"than enough. In the future, a separate list may be created just for ".
-		"development talk."
-	);
-
-	tag( 'p', array(),
-		"You can join the user's list by visiting the list page at ".
-		a( 'http://lists.berlios.de/mailman/listinfo/jmlist-users' ). "."
+		"If you have questions about $_jMList, need support or just want to ".
+		"talk about its development, we invite you to join the ".
+		a( "general discussion mailing list", 'http://lists.berlios.de/mailman/listinfo/jmlist-users' )."."
 	);
 
 ?>
