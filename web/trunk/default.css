@@ -65,10 +65,16 @@ div#body {
 }
 
 #body h2 {
+	margin-left: 0em;
 }
 
 #body p {
 	text-indent: 2em;
+	margin-left: 8em;
+	margin-right: 0em;
+}
+
+#body div.margin {
 	margin-left: 8em;
 	margin-right: 0em;
 }
