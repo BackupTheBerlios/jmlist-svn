@@ -19,13 +19,9 @@
 	);
 
 	open( 'ul', array() );
-	tag( 'li', array(),
-		a( 'popt', 'ftp://ftp.rpm.org/pub/rpm/dist/rpm-4.1.x/' ).
-		" (temporary dependency, it'll soon be included on the package)"
-	);
-	tag( 'li', array(), a( 'GLib', 'http://www.gtk.org/' ) );
-	tag( 'li', array(), a( 'LibXML2', 'http://xmlsoft.org/' ) );
-	tag( 'li', array(), a( 'ID3Lib', 'http://id3lib.sourceforge.net/' ) );
+	tag( 'li', array(), a( 'GLib', 'http://www.gtk.org/' ) . " 2.4.0 or higher" );
+	tag( 'li', array(), a( 'LibXML', 'http://xmlsoft.org/' ) . " 2.6.0 or higher" );
+	tag( 'li', array(), a( 'ID3Lib', 'http://id3lib.sourceforge.net/' ) . " 3.8.0 or higher" );
 	close();
 
 
