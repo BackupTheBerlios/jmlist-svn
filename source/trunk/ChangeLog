@@ -1,6 +1,11 @@
 ChangeLog for jMList - Media file listing generator
 ===================================================
 
+** 2005 Feb 19 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * configure.ac, main.c:
+      Added URL to project metadata, to the output of --version and to the
+      generated XML output (to be used on stylesheets).
+
 ** 2005 Feb 16 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * file.c, file-mpeg.c, file-mpeg-id3v1.c, file-mpeg-id3v2.c:
       Using glib way for declaring inline functions.

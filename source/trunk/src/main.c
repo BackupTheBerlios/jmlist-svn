@@ -68,7 +68,8 @@ main(int argc, char **argv)
     while ((opt = poptGetNextOpt(optcon)) >= 0) {
         switch (opt) {
         case OPT_VERSION:
-            g_print(PACKAGE_NAME " " PACKAGE_VERSION "\n");
+            g_print(PACKAGE_STRING "\n");
+            g_print(PACKAGE_URL "\n");
             g_print("Copyright (C) 2004 - Juliano Ravasi Ferraz\n");
             exit(EXIT_SUCCESS);
         }
@@ -87,6 +88,9 @@ main(int argc, char **argv)
     doc = xmlNewDoc("1.0");
     root_node = xmlNewNode(NULL, "jmlist");
     xmlDocSetRootElement(doc, root_node);
+    xmlNewProp(root_node, "version", "0 (beta)");
+    xmlNewProp(root_node, "generated-by", PACKAGE_STRING);
+    xmlNewProp(root_node, "generator-url", PACKAGE_URL);
 
 
     /* Scan the given directories, and generate the output file. */

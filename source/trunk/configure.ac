@@ -7,6 +7,7 @@ AC_PREREQ(2.59)
 define(JMLIST_MAJOR_VERSION, 0)
 define(JMLIST_MINOR_VERSION, 0)
 define(JMLIST_MICRO_VERSION, 1)
+define(JMLIST_URL, "http://jmlist.berlios.de/")
 
 
 ### Autoconf init.
@@ -22,7 +23,9 @@ AM_INIT_AUTOMAKE
 AM_MAINTAINER_MODE
 
 
-### Versioning.
+### URL and Versioning.
+AC_DEFINE(PACKAGE_URL, JMLIST_URL,
+    [Define to the website address of this package.])
 AC_DEFINE(PACKAGE_VERSION_MAJOR, JMLIST_MAJOR_VERSION,
     [Define to the major version of this package.])
 AC_DEFINE(PACKAGE_VERSION_MINOR, JMLIST_MINOR_VERSION,
