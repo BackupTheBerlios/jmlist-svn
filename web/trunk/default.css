@@ -1,0 +1,93 @@
+body {
+	background-color: #FFFFFF;
+	color: #000000;
+	font-family: sans-serif;
+	font-size: 10pt;
+	margin: 0px;
+	padding: 0px;
+}
+
+table#topheading {
+	background-attachment: scroll;
+	background-color: transparent;
+	background-image: url(img/jmlist-logo.png);
+	background-repeat: no-repeat;
+	border-spacing: 1px;
+	height: 75px;
+}
+
+table#topheading tr#r1 {
+	height: 38px;
+}
+
+table#topheading td#c11 {
+	width: 20px;
+}
+
+table#topheading td#menu {
+	vertical-align: top;
+}
+
+#menu a:link,
+#menu a:visited {
+	color: #0000C0;
+	text-decoration: underline;
+}
+
+#menu a:active,
+#menu a:hover {
+	color: #0040FF;
+}
+
+#menu a.current {
+	color: #000000;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#menu a.current:before {
+	content: "[ ";
+	color: #0000FF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#menu a.current:after {
+	content: " ]";
+	color: #0000FF;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div#body {
+	margin: 0px 3px;
+	padding: 0px 10px;
+}
+
+#body h2 {
+}
+
+#body p {
+	text-indent: 2em;
+	margin-left: 8em;
+	margin-right: 0em;
+}
+
+#body ol,
+#body ul {
+	margin-left: 10em;
+}
+
+#body code {
+	background-color: #F0F0F0;
+	font-family: monospace;
+	font-size: 0.85em;
+}
+
+div#footer {
+	margin: 0px 3px;
+}
+
+span.jmlist {
+	font-weight: bold;
+}
