@@ -45,54 +45,14 @@ AC_PROG_RANLIB
 AC_CHECK_LIB([popt], [poptGetContext])
 AM_CONDITIONAL([HAVE_LIBPOPT], [test _$ac_cv_lib_popt_poptGetContext = _yes])
 
-# glib (http://www.gtk.org/) and libxml (http://xmlsoft.org/)
-pkg_modules="glib-2.0 >= 2.4.0 libxml-2.0 >= 2.6.0"
+# glib (http://www.gtk.org/)
+# libxml (http://xmlsoft.org/)
+# libxslt (http://xmlsoft.org/XSLT/)
+pkg_modules="glib-2.0 >= 2.4.0 libxml-2.0 >= 2.6.0 libxslt >= 1.1.0"
 PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 
-# id3lib (taken from easytag-1.99.3)
-# Check which libs are required by id3lib, libid3.la is fucked up
-AC_SEARCH_LIBS(ID3Tag_Link, "id3" "id3 -lstdc++" "id3 -lz" "id3 -lz -lstdc++",, AC_MSG_ERROR([id3lib not found]))
-# Needed to link correctly with id3lib 3.8.0
-LIBS="-lz -lstdc++ $LIBS"
-
-# expected version for cross compiling
-ID3LIB_MAJOR=3
-ID3LIB_MINOR=8
-ID3LIB_PATCH=0
-
-AC_MSG_CHECKING(for id3lib version)
-      AC_TRY_RUN([
-#include <id3.h>
-#include <stdio.h>
-int 
-main ()
-{
-    FILE *output;
-    output=fopen("conftest.id3","w");
-    fprintf(output,"ID3LIB_MAJOR=%d\n"
-	    "ID3LIB_MINOR=%d\n"
-	    "ID3LIB_PATCH=%d\n",
-	    ID3LIB_MAJOR_VERSION,
-	    ID3LIB_MINOR_VERSION,
-	    ID3LIB_PATCH_VERSION);
-    fclose(output);
-    exit(0);
-}
-], [
-    . ./conftest.id3;
-    echo "${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH}"
-], [
-    AC_MSG_WARN([could not determine id3lib version])
-], [
-    echo $ac_n "cross compiling; assuming ${ID3LIB_MAJOR}.${ID3LIB_MINOR}.${ID3LIB_PATCH} $ac_c"
-])
-AC_DEFINE_UNQUOTED(ID3LIB_MAJOR, $ID3LIB_MAJOR, [id3lib major version])
-AC_DEFINE_UNQUOTED(ID3LIB_MINOR, $ID3LIB_MINOR, [id3lib minor version])
-AC_DEFINE_UNQUOTED(ID3LIB_PATCH, $ID3LIB_PATCH, [id3lib patch level])
-
-
-AC_SUBST(PACKAGE_CFLAGS)
-AC_SUBST(PACKAGE_LIBS)
+# id3lib (http://id3tag.sourceforge.net/)
+ID3LIB_CHECK([3.8.0])
 
 
 ### GCC defaults
@@ -101,19 +61,25 @@ CFLAGS="$CFLAGS -Wall"
 
 ### Checks for header files.
 AC_HEADER_STDC
-AC_CHECK_HEADERS([alloca.h float.h libintl.h limits.h mcheck.h])
+AC_CHECK_HEADERS([alloca.h fcntl.h float.h libintl.h limits.h locale.h mcheck.h wchar.h])
 
 
 ### Checks for typedefs, structures, and compiler characteristics.
 AC_C_CONST
+AC_C_INLINE
 AC_TYPE_SIZE_T
+AC_TYPE_OFF_T
 AC_STRUCT_TM
 
 
 ### Checks for library functions.
+AC_FUNC_ALLOCA
+AC_FUNC_MALLOC
+AC_FUNC_REALLOC
 AC_FUNC_STAT
 AC_FUNC_STRFTIME
-AC_CHECK_FUNCS([geteuid getuid localtime_r memset mtrace setregid strerror __secure_getenv])
+AC_FUNC_STRTOD
+AC_CHECK_FUNCS([geteuid getuid localtime_r memset mtrace setlocale setregid strchr strerror strrchr strtol __secure_getenv])
 
 
 ### Output.
