@@ -1,0 +1,43 @@
+ChangeLog for jMList - Media file listing generator
+===================================================
+
+[ Version 0.0.2 ]
+** 2005 Feb 20 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * style.c, main.c:
+      Style engine implemented. New options --style and --list-styles. The
+      current active stylesheet can also define its own command-line
+      options. Stylesheets have metadata stored on .xml files.
+   * (everything):
+      Indentation and folding fixes. Improved documentation. Fixed some
+      inlines and consts in function prototypes. Better logging support.
+   ### Version 0.0.2 released (repository only).
+
+** 2005 Feb 19 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * configure.ac, main.c:
+      Added URL to project metadata, to the output of --version and to the
+      generated XML output (to be used on stylesheets).
+   * file-mpeg-id3v2.c:
+      Added charset detection/conversion to ID3v2 also.
+   * styles/xhtml-collapsible.xsl:
+      Added a XSLT stylesheet to produce a XHTML page of a media library
+      in a collapsible tree format. Uses CSS and Javascript. Very nice
+      output.
+   * main.c, file.c, directory.c:
+      Added --verbose option.
+
+** 2005 Feb 16 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * file.c, file-mpeg.c, file-mpeg-id3v1.c, file-mpeg-id3v2.c:
+      Using glib way for declaring inline functions.
+   * configure.ac, lib/popt/:
+      Added a reduced popt library to the package, that should be used if
+      the user system doesn't have it installed.
+
+
+[ Version 0.0.1 ]
+** 2005 Feb 12 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   ### Initial 0.0.1 release.
+
+
+===
+ vim: set ft=changelog sw=3 ts=3 et:
+ vim600: set fdm=expr fdc=2 fde=getline(v\:lnum)=~'^\\*\\*'?'>1'\:getline(v\:lnum)=~'^\\s\\{3}'\|\|getline(v\:lnum)==\"\"&&getline(v\:lnum-1)=~'^\\s\\{3}'?1\:0 :

@@ -1,0 +1,28 @@
+#!/bin/sh
+
+set -e
+
+echo "*** You'll need the following packages to build jMList from repository:"
+echo "***   - automake 1.8 or better"
+echo "***   - autoconf 2.59 or better"
+
+echo
+echo "*** Running \`aclocal -I m4'..."
+aclocal -I m4
+
+echo
+echo "*** Running \`automake --gnu --add-missing'..."
+automake --gnu --add-missing
+
+echo
+echo "*** Running \`autoheader'..."
+autoheader
+
+echo
+echo "*** Running \`autoconf'..."
+autoconf
+
+echo
+echo "*** Development support files created. Now run \`./configure'."
+echo "*** Suggestion: \`./configure --enable-maintainer-mode'. To see which other"
+echo "    options are available, try \`./configure --help'."
