@@ -1,0 +1,93 @@
+jMList README
+
+   ---------------------------------------------------------------------------
+
+Disclaimer
+
+   This program is free software. It is distributed with the hope it will be
+   useful. The developers hold no responsability for any damage caused by the
+   use of this program.
+
+Supported Platforms
+
+   jMList is written with reasonable effort to make it portable, and most
+   systems should compile it without problem. GLib is used as a portability
+   layer between the operating system and jMList, and other libraries which
+   jMList depends on are also reported to work on a great variety of systems.
+
+   However, the only platforms where jMList was tested, by the time of this
+   writing, are:
+
+     o Linux 2.6, glibc 2.3 (main development system).
+
+     o Linux 2.4, glibc 2.2.
+
+   You should be able to compile and run jMList on any Unix-alike system
+   (including Windows MSYS/MingW) where the required libraries run. If you
+   manage to compile jMList on a system not listed above, please report to
+   our mailing list so it get listed here.
+
+Installation
+
+  Requirements
+
+   In order to compile jMList, you need the following libraries already
+   installed on your system.
+
+  Note
+
+   If you are using a Linux distribution, you will need to install also the
+   development (-devel) packages.
+
+   GLib 2.4.0 (required)
+
+           http://www.gtk.org/
+
+           This is used as a compatibility layer between jMList and your
+           operating system. GLib also provides several handy functions and
+           data types that make programming easy. If you are running a Linux
+           OS, chances are that you already have this installed. You may need
+           just to get the -devel packages from your distribution CDs and
+           install them.
+
+   LibXML 2.6.0 and LibXSLT 1.1.0 (required)
+
+           http://xmlsoft.org/
+
+           Used for XML generation and transform. Also, these are quite
+           simple to get installed and running without any hassle if you are
+           running a Linux OS. Check your distribution CDs.
+
+   ID3Lib 3.8.0 (required)
+
+           http://id3lib.sourceforge.net/
+
+           This is used to extract ID3v2 tags from MP3 files.
+
+   OggVorbis 1.1.0 (optional)
+
+           http://www.xiph.org/ogg/vorbis/
+
+           You need to install OggVorbis (both libogg and libvorbis) only if
+           you want support for OGG Vorbis files.
+
+  Basic Installation
+
+   If everything is setup properly and all requirements are met, jMList
+   configuration and installation is as simple as:
+
+         cd jmlist-0.1.0
+         ./configure
+         make
+         make install
+      
+
+   Binaries will be installed on /usr/local/bin and data files on
+   /usr/local/share/jmlist. For more detailed, generic, installation
+   instructions, refer to the INSTALL file.
+
+Contact and Support
+
+   If you have problems getting jMList to work, ask on our mailing list on
+   the following address providing as much information as you can:
+   http://lists.berlios.de/mailman/listinfo/jmlist-users

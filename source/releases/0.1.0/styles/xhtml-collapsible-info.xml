@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+================================================================================
+ jMList - Media file listing generator
+ http://www.juliano.info/projects/jMList/
+================================================================================
+
+   Author: Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+  License: GNU General Public License
+-->
+<style-info>
+  <head>
+    <name>xhtml-collapsible</name>
+    <title>XHTML Collapsible Tree</title>
+    <version>0.2</version>
+    <author>Juliano Ravasi Ferraz</author>
+    <output>xhtml</output>
+    <descr>This stylesheet can be used to generate a XHTML page listing your
+media library in a collapsible tree. Files and directories are listed
+using icons and different colors, making them easily recognizable.
+Each directory has a "plus" icon before its folder icon, which expands
+its contents when clicked.</descr>
+  </head>
+  <params>
+    <param name='support-dir'>
+      <short-descr>Directory of support files</short-descr>
+      <descr>Relative path to the directory where support files (stylesheets,
+images and scripts) can be found. Should not end with a '/'.</descr>
+    </param>
+    <param name='page-title'>
+      <short-descr>Page title</short-descr>
+      <descr>The title of the page.</descr>
+    </param>
+    <param name='href-base'>
+      <short-descr>Link base</short-descr>
+      <descr>When specified, &lt;a&gt; links are generated for each file using
+this string as a prefix for the href attribute.</descr>
+    </param>
+  </params>
+</style-info>
+<!-- vim: set sw=2 et: -->

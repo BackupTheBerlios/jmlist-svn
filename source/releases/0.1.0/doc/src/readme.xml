@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<article>
+  <title>jMList README</title>
+
+  <!-- ================================================================== -->
+  <!-- DISCLAIMER                                                         -->
+  <!-- ================================================================== -->
+
+  <sect1>
+    <title>Disclaimer</title>
+
+    <para>
+      This program is free software. It is distributed with the hope it will
+      be useful. The developers hold no responsability for any damage caused
+      by the use of this program.
+    </para>
+  </sect1>
+
+  <!-- ================================================================== -->
+  <!-- SUPPORTED PLATFORMS                                                -->
+  <!-- ================================================================== -->
+
+  <sect1>
+    <title>Supported Platforms</title>
+
+    <para>
+      jMList is written with reasonable effort to make it portable, and most
+      systems should compile it without problem. GLib is used as a portability
+      layer between the operating system and jMList, and other libraries which
+      jMList depends on are also reported to work on a great variety of
+      systems.
+    </para>
+
+    <para>
+      However, the only platforms where jMList was tested, by the time of this
+      writing, are:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>
+          Linux 2.6, glibc 2.3 (main development system).
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Linux 2.4, glibc 2.2.
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>
+      You should be able to compile and run jMList on any Unix-alike system
+      (including Windows MSYS/MingW) where the required libraries run. If you
+      manage to compile jMList on a system not listed above, please report
+      to our <ulink url='http://lists.berlios.de/mailman/listinfo/jmlist-users'>
+      mailing list</ulink> so it get listed here.
+    </para>
+
+  </sect1>
+
+  <!-- ================================================================== -->
+  <!-- INSTALLATION                                                       -->
+  <!-- ================================================================== -->
+
+  <sect1>
+    <title>Installation</title>
+
+    <sect2>
+      <title>Requirements</title>
+
+      <para>
+        In order to compile jMList, you need the following libraries already
+        installed on your system.
+      </para>
+      <note>
+        <para>
+          If you are using a Linux distribution, you will need to install also
+          the development (-devel) packages.
+        </para>
+      </note>
+
+      <variablelist>
+        <varlistentry>
+          <term>GLib 2.4.0 (required)</term>
+          <listitem>
+            <para>
+              <ulink url='http://www.gtk.org/'>http://www.gtk.org/</ulink>
+            </para>
+            <para>
+              This is used as a compatibility layer between jMList and your
+              operating system. GLib also provides several handy functions and
+              data types that make programming easy. If you are running a Linux
+              OS, chances are that you already have this installed. You may
+              need just to get the -devel packages from your distribution CDs
+              and install them.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>LibXML 2.6.0 and LibXSLT 1.1.0 (required)</term>
+          <listitem>
+            <para>
+              <ulink url='http://xmlsoft.org/'>http://xmlsoft.org/</ulink>
+            </para>
+            <para>
+              Used for XML generation and transform. Also, these are quite
+              simple to get installed and running without any hassle if you are
+              running a Linux OS. Check your distribution CDs.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>ID3Lib 3.8.0 (required)</term>
+          <listitem>
+            <para>
+              <ulink url='http://id3lib.sourceforge.net/'>http://id3lib.sourceforge.net/</ulink>
+            </para>
+            <para>
+              This is used to extract ID3v2 tags from MP3 files.
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>OggVorbis 1.1.0 (optional)</term>
+          <listitem>
+            <para>
+              <ulink url='http://www.xiph.org/ogg/vorbis/'>http://www.xiph.org/ogg/vorbis/</ulink>
+            </para>
+            <para>
+              You need to install OggVorbis (both libogg and libvorbis) only
+              if you want support for OGG Vorbis files.
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+    </sect2>
+
+    <sect2>
+      <title>Basic Installation</title>
+      <para>
+        If everything is setup properly and all requirements are met, jMList
+        configuration and installation is as simple as:
+      </para>
+      <programlisting>
+        cd jmlist-0.1.0
+        ./configure
+        make
+        make install
+      </programlisting>
+      <para>
+        Binaries will be installed on <filename>/usr/local/bin</filename> and
+        data files on <filename>/usr/local/share/jmlist</filename>. For more
+        detailed, generic, installation instructions, refer to the
+        <filename>INSTALL</filename> file.
+      </para>
+    </sect2>
+
+  </sect1>
+
+  <!-- ================================================================== -->
+  <!-- CONTACT AND SUPPORT                                                -->
+  <!-- ================================================================== -->
+
+  <sect1>
+    <title>Contact and Support</title>
+
+    <para>
+      If you have problems getting jMList to work, ask on our mailing list
+      on the following address providing as much information as you can:
+      <ulink url='http://lists.berlios.de/mailman/listinfo/jmlist-users'>http://lists.berlios.de/mailman/listinfo/jmlist-users</ulink>
+    </para>
+  </sect1>
+
+</article>
+
+<!-- vim: set sw=2 et : -->
