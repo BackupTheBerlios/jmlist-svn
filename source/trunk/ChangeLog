@@ -1,6 +1,7 @@
 ChangeLog for jMList - Media file listing generator
 ===================================================
 
+[ Version 0.0.2 ]
 ** 2005 Feb 20 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * style.c, main.c:
       Style engine implemented. New options --style and --list-styles. The
@@ -9,6 +10,7 @@ ChangeLog for jMList - Media file listing generator
    * (everything):
       Indentation and folding fixes. Improved documentation. Fixed some
       inlines and consts in function prototypes. Better logging support.
+   ### Version 0.0.2 released (repository only).
 
 ** 2005 Feb 19 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * configure.ac, main.c:
