@@ -19,10 +19,11 @@
 	);
 
 	open( 'ul', array() );
-	tag( 'li', array(), a( 'GLib', 'http://www.gtk.org/' ) . " 2.4.0 or higher" );
-	tag( 'li', array(), a( 'LibXML', 'http://xmlsoft.org/' ) . " 2.6.0 or higher" );
-	tag( 'li', array(), a( 'LibXSLT', 'http://xmlsoft.org/XSLT/' ) . " 1.1.0 or higher" );
-	tag( 'li', array(), a( 'ID3Lib', 'http://id3lib.sourceforge.net/' ) . " 3.8.0 or higher" );
+	tag( 'li', array(), a( 'GLib', 'http://www.gtk.org/' ) . " 2.4.0 or higher (required)" );
+	tag( 'li', array(), a( 'LibXML', 'http://xmlsoft.org/' ) . " 2.6.0 or higher (require)" );
+	tag( 'li', array(), a( 'LibXSLT', 'http://xmlsoft.org/XSLT/' ) . " 1.1.0 or higher (required)" );
+	tag( 'li', array(), a( 'ID3Lib', 'http://id3lib.sourceforge.net/' ) . " 3.8.0 or higher (required)" );
+	tag( 'li', array(), a( 'OggVorbis', 'http://www.xiph.org/ogg/vorbis/' ) . " 1.1.0 or higher (optional, for OggVorbis support)" );
 	close();
 
 

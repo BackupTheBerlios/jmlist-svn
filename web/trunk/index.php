@@ -12,7 +12,7 @@
 	$_jMList = txttag( 'span', array( 'class' => 'jmlist' ), 'jMList' );
 	$_XML = acronym( 'XML', 'eXtensible Markup Language' );
 	$_HTML = acronym( 'HTML', 'HyperText Markup Language' );
-	$_XSL = acronym( 'XSL', 'XML Stylesheet' );
+	$_XSL = acronym( 'XSL', 'eXtensible Stylesheet Language' );
 	$_RDF = acronym( 'RDF', 'Resource Description Framework' );
 	$_RSS = acronym( 'RSS', 'RDF Site Summary' );
 
@@ -28,11 +28,12 @@
 	);
 
 	$_MP3 = acronym( 'MP3', 'MPEG Layer-3' );
+	$_FLAC = acronym( 'FLAC', 'Free Lossless Audio Codec' );
 
 	tag( 'p', array(),
 		"$_jMList is still in its earlier stages of developement, but it ".
-		"already supports identification of $_MP3 files and is capable of ".
-		"extracting meta-information from both ID3 and ID3v2 tags."
+		"already supports identification of $_MP3 and OGG files and is capable ".
+		"of extracting meta-information from ID3, ID3v2 and Vorbis tags."
 	);
 
 	tag( 'p', array(),
@@ -49,8 +50,8 @@
 
 	open( 'ol', array() );
 	tag( 'li', array(), "Internally transform output through $_XSL." );
-	tag( 'li', array(), "Reading of MPEG Layer 1, 2 and 3 ($_MP3) formats." );
-	tag( 'li', array(), "Reading of ID3 v1 and v2 tags." );
+	tag( 'li', array(), "Parsing information from MPEG Layer 1, 2 and 3 ($_MP3) files, both ID3 v1 and v2 tags." );
+	tag( 'li', array(), "Parsing information from Ogg Vorbis (OGG) files." );
 	tag( 'li', array(), "Full Unicode support." );
 	tag( 'li', array(), "Parsing data in UTF-8 and ISO8859-1 encondings from ID3 tags." );
 	close();
@@ -59,12 +60,15 @@
 		"The following features are planned to be supported:"
 	);
 
+	$_NLS = acronym( 'NLS', 'National Language Support' );
+	$_i18n = acronym( 'i18n', 'internationalization' );
+
 	open( 'ol' );
 	tag( 'li', array(), "Detect and parse data from tags based on an user-provided list of possible character encodings." );
 	tag( 'li', array(), "Properly support files > 2GiB." );
-	tag( 'li', array(), "National Language (NLS, i18n) support" );
-	tag( 'li', array(), "Reading of most audio (MPC, OGG, FLAC) formats." );
-	tag( 'li', array(), "Reading of most video (AVI, MPEG, OGM, MKV) formats." );
+	tag( 'li', array(), "National Language ($_NLS, $_i18n) support" );
+	tag( 'li', array(), "Reading of most common audio (MPC, $_FLAC, APE) formats." );
+	#tag( 'li', array(), "Reading of most common video (AVI, MPEG, OGM, MKV) formats." );
 	close();
 
 ?>
