@@ -27,12 +27,13 @@
 	close();
 
 
-	h2( 'Binary/Source Packages' );
+	h2( 'Source Packages' );
+
+	h3( 'Version 0.1.0 (beta)' );
 
 	tag( 'p', array(),
-		"Since $_jMList is still in an earlier stage of development, ".
-		"there aren't any packages released. However, if you want to test ".
-		"it, feel free to checkout the latest repository snapshot."
+		a( 'jmlist-0.1.0.tar.gz', 'http://download.berlios.de/jmlist/jmlist-0.1.0.tar.gz' ). tag( 'br' ).
+		a( 'Release Notes', 'http://developer.berlios.de/project/shownotes.php?release_id=5187' )
 	);
 
 
