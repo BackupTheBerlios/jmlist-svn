@@ -1,0 +1,116 @@
+body, html {
+    background-color: #ffffff;
+    color: #000000;
+    font-family: sans-serif;
+    font-size: 11pt;
+}
+
+
+/*** HEADING ******************************************************************/
+
+div#heading {
+    border-bottom: 1px solid #000066;
+}
+
+div#heading h1 {
+    color: #333399;
+    font-family: serif;
+    font-size: 1.8em;
+    font-style: italic;
+    font-weight: bolder;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+div#heading p.generated-by {
+    color: #333399;
+    font-size: 0.8em;
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+
+div#heading p.generated-by a {
+    color: #663399;
+    text-decoration: inherit;
+}
+
+div#footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: auto;
+
+    background-color: #eeeeee;
+    border-top: 1px solid #cccccc;
+    font-size: 0.8em;
+    padding: 2px;
+    text-align: right;
+    z-index: 10;
+}
+
+
+/*** BODY *********************************************************************/
+
+.listing {
+    list-style-type: none;
+    margin: 0em;
+    padding: 0em;
+}
+
+.directory {
+}
+
+.directory span.name {
+    color: #003399;
+}
+
+.directory .listing {
+    border-left: 1px dotted #003399;
+    margin-left: 10px;
+    padding-left: 8px;
+}
+
+
+.file {
+}
+
+.file span.name {
+    color: #009933;
+}
+
+
+div.name {
+    position: relative;
+}
+
+
+img.collapse {
+    position: absolute;
+    top: auto;
+    bottom: 0.20em;
+    left: -15px;
+    height: 12px;
+    width: 12px;
+
+    border: 0px;
+    margin: auto 0px;
+}
+
+img.icon {
+    border: 0px;
+    margin: 0px 2px;
+    vertical-align: middle;
+}
+
+
+a[href] {
+    color: inherit;
+    text-decoration: underline;
+}
+
+a[href]:hover, a[href]:active, a[href]:focus {
+    background-color: #ffffee;
+}

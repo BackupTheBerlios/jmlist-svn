@@ -7,6 +7,10 @@ ChangeLog for jMList - Media file listing generator
       generated XML output (to be used on stylesheets).
    * file-mpeg-id3v2.c:
       Added charset detection/conversion to ID3v2 also.
+   * styles/xhtml-collapsible.xsl:
+      Added a XSLT stylesheet to produce a XHTML page of a media library
+      in a collapsible tree format. Uses CSS and Javascript. Very nice
+      output.
 
 ** 2005 Feb 16 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * file.c, file-mpeg.c, file-mpeg-id3v1.c, file-mpeg-id3v2.c:
