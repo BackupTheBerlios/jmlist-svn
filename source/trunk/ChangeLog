@@ -1,6 +1,10 @@
 ChangeLog for jMList - Media file listing generator
 ===================================================
 
+[ Version 0.1.0 ]
+** 2005 Mar 26 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   ### Version 0.1.0 released.
+
 ** 2005 Feb 22 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * configure.ac, m4/ogg.m4, m4/vorbis.m4:
       Added checks for libogg and libvorbis.

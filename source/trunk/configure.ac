@@ -5,8 +5,8 @@ AC_PREREQ(2.59)
 
 ### Version information.
 define(JMLIST_MAJOR_VERSION, 0)
-define(JMLIST_MINOR_VERSION, 0)
-define(JMLIST_MICRO_VERSION, 2)
+define(JMLIST_MINOR_VERSION, 1)
+define(JMLIST_MICRO_VERSION, 0)
 define(JMLIST_URL, "http://jmlist.berlios.de/")
 
 
