@@ -6,4 +6,7 @@ stylesdir = $(pkgdatadir)/styles
 
 nobase_dist_styles_DATA = \
 	text-simple.xsl			\
-	xhtml-collapsible.xsl	xhtml-collapsible-xsl/*
+	text-simple-info.xml		\
+	xhtml-collapsible.xsl		\
+	xhtml-collapsible-info.xml	\
+	xhtml-collapsible-xsl/*

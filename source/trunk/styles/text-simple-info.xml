@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+================================================================================
+ jMList - Media file listing generator
+ http://www.juliano.info/projects/jMList/
+================================================================================
+
+   Author: Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+  License: GNU General Public License
+-->
+<style-info>
+  <head>
+    <name>text-simple</name>
+    <title>Simple text</title>
+    <version>0.1</version>
+    <author>Juliano Ravasi Ferraz</author>
+    <output>text</output>
+    <descr>This stylesheet generates a plain-text tabular list of media
+files.</descr>
+  </head>
+</style-info>
+<!-- vim: set sw=2 et: -->
