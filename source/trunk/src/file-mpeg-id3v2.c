@@ -149,8 +149,21 @@ id3v2_parse(FILE *fp)
                                             parse_genre(tmp));
                         }
                         else {
-                            xmlNewTextChild(tag_node, NULL,
-                                            id3v2_fields[i].name, tmp);
+                            if (g_utf8_validate(tmp, -1, NULL)) {
+                                xmlNewTextChild(tag_node, NULL,
+                                                id3v2_fields[i].name, tmp);
+                            }
+                            else {
+                                gchar *r = g_convert(tmp, -1, "UTF-8",
+                                                     "ISO8859-1", NULL,
+                                                     NULL, NULL);
+
+                                if (r != NULL) {
+                                    xmlNewTextChild(tag_node, NULL,
+                                                    id3v2_fields[i].name, r);
+                                    g_free(r);
+                                }
+                            }
                         }
                     }
                 }
