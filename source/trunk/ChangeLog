@@ -1,6 +1,15 @@
 ChangeLog for jMList - Media file listing generator
 ===================================================
 
+** 2005 Feb 20 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * style.c, main.c:
+      Style engine implemented. New options --style and --list-styles. The
+      current active stylesheet can also define its own command-line
+      options. Stylesheets have metadata stored on .xml files.
+   * (everything):
+      Indentation and folding fixes. Improved documentation. Fixed some
+      inlines and consts in function prototypes. Better logging support.
+
 ** 2005 Feb 19 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * configure.ac, main.c:
       Added URL to project metadata, to the output of --version and to the

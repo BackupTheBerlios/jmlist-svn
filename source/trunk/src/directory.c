@@ -12,12 +12,19 @@
 
 #include "common.h"
 #include "directory.h"
-
 #include "main.h"
 #include "file.h"
 
 
-
+/* directory_proc() {{{ */
+/**
+ * Process a directory, listing each file and descending recursively into its
+ * subdirectories.
+ *
+ * \param real_path Real path to the directory.
+ * \param dir_name Directory name, the last component of its path.
+ * \returns A newly allocated xmlNodePtr.
+ */
 xmlNodePtr
 directory_proc(const gchar *real_path, const gchar *dir_name)
 {
@@ -36,8 +43,7 @@ directory_proc(const gchar *real_path, const gchar *dir_name)
     if (dir != NULL) {                  /* g_dir_open() succeeded */
         const gchar *entry;
 
-        if (opt_verbose)
-            g_printerr("Processing \"%s\"...\n", real_path);
+        log_info("Processing \"%s\"...", real_path);
 
         /* visit each directory entry */
         while ((entry = g_dir_read_name(dir)) != NULL) {
@@ -72,6 +78,7 @@ directory_proc(const gchar *real_path, const gchar *dir_name)
     return dir_node;
 }
 
+/* }}} */
 
 
 /* vim: set ts=8 sw=4 et: */

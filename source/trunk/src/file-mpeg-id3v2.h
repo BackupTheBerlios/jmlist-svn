@@ -14,7 +14,7 @@
 #define FILE_MPEG_ID3V2_H
 
 
-xmlNodePtr id3v2_parse(FILE *fp);
+extern xmlNodePtr       id3v2_parse(FILE *fp);
 
 
 #endif	/* FILE_MPEG_ID3V2_H */

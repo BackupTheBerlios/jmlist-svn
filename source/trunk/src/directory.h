@@ -14,7 +14,7 @@
 #define DIRECTORY_H
 
 
-xmlNodePtr directory_proc(const gchar *real_path, const gchar *dir_name);
+extern xmlNodePtr       directory_proc(const gchar *real_path, const gchar *dir_name);
 
 
 #endif	/* DIRECTORY_H */

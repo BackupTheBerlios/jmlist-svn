@@ -49,7 +49,15 @@ id3v2_fields[] = {
 };
 
 
-G_INLINE_FUNC glong
+/* check_header() {{{ */
+
+/**
+ * Checks if this is a well-formed ID3v2 tag header.
+ *
+ * \param header The header to check.
+ * \returns The size of the tag.
+ */
+static inline glong
 check_header(ID3v2Header header)
 {
     if (header.id[0] != 'I' || header.id[1] != 'D' || header.id[2] != '3')
@@ -65,8 +73,16 @@ check_header(ID3v2Header header)
         (header.size[2] << 7) | header.size[3];
 }
 
+/* }}} */
 
-G_INLINE_FUNC G_CONST_RETURN gchar *
+/* parse_genre() {{{ */
+/**
+ * Parse the genre of an ID3v2 tag.
+ *
+ * \param str String stored on tag.
+ * \returns Human-readable genre specification.
+ */
+static inline const gchar *
 parse_genre(const gchar *str)
 {
     const gchar *s;
@@ -92,7 +108,17 @@ parse_genre(const gchar *str)
     }
 }
 
+/* }}} */
 
+/* id3v2_parse() {{{ */
+/**
+ * Parse an ID3v2 tag.
+ * After parsing, the file pointer is left after the end of the tag, where
+ * the actual audio data should start.
+ *
+ * \param fp File which will be parsed.
+ * \returns A XML tree representing the tag data.
+ */
 xmlNodePtr
 id3v2_parse(FILE *fp)
 {
@@ -175,6 +201,8 @@ id3v2_parse(FILE *fp)
     return tag_node;
 }
 
+
+/* }}} */
 
 
 /* vim: set ts=8 sw=4 et: */

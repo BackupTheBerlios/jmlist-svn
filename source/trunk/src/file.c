@@ -24,29 +24,15 @@ struct FileParser_struct {
 }
 FileParser;
 
+
 GList *parser_list = NULL;
 
-static FileParser * file_parser_get_by_extension(const gchar *extension);
+
+static FileParser *
+file_parser_get_by_extension(const gchar *extension);
 
 
-/* get_file_extension(file_name) {{{ */
-/**
- * Return a pointer to the extension part of an UTF-8 enconded filename.
- */
-G_INLINE_FUNC G_CONST_RETURN gchar *
-get_file_extension(const gchar *file_name)
-{
-    const char *p;
-
-    if ((p = strrchr(file_name, '.')) == NULL)
-        return NULL;                    /* file has no extension */
-    else
-        return p + 1;
-}
-
-/* }}} */
-
-/* file(real_path, file_name) {{{ */
+/* file_proc() {{{ */
 /**
  * Process a file, checking if it should be listed and retrieving its data in
  * XML format.
@@ -62,7 +48,7 @@ file_proc(const gchar *real_path,
 
     /* get UTF-8 encoded filename and extension */
     file_name_utf8 = g_filename_to_utf8(file_name, -1, NULL, NULL, NULL);
-    file_extension = get_file_extension(file_name_utf8);
+    file_extension = filename_get_extension(file_name_utf8);
 
     /* check if we support this file */
     if (file_extension == NULL || file_extension[0] == '\0') {
@@ -107,7 +93,7 @@ file_proc(const gchar *real_path,
 
 /* }}} */
 
-/* file_parser_register(name, extensions, type, func) {{{ */
+/* file_parser_register() {{{ */
 /**
  * Register a new file parser plugin.
  *
@@ -134,7 +120,7 @@ file_parser_register(const gchar *name,
 
 /* }}} */
 
-/* file_parser_get_by_extension(extension) {{{ */
+/* file_parser_get_by_extension() {{{ */
 /**
  * Return the file parser associated to the given extension, if any.
  *
@@ -170,6 +156,66 @@ file_parser_init_all(void)
 }
 
 /* }}} */
+
+/* filename_get_extension() {{{ */
+/**
+ * Return a pointer to the extension part of an UTF-8 enconded filename.
+ *
+ * \param filename Original filename.
+ * \returns A pointer inside #filename pointing to the extension, or NULL if
+ *      the filename didn't have an extension.
+ */
+const gchar *
+filename_get_extension(const gchar *filename)
+{
+    const char *p;
+
+    if ((p = strrchr(filename, '.')) == NULL)
+        return NULL;                    /* file has no extension */
+    else
+        return p + 1;
+}
+
+/* }}} */
+
+/* filename_change_extension() {{{ */
+/**
+ * Return a new filename with a different extension.
+ *
+ * \param filename Original filename.
+ * \param extension New extension to be applied to the filename (with a
+ *      leading '.').
+ * \returns The newly allocated filename with different extension, or NULL if
+ *      the filename didn't have an extension.
+ */
+gchar *
+filename_change_extension(const char *filename, const char *extension)
+{
+    gchar *result;
+    const gchar *basename, *oldext;
+
+    /* find last path element */
+    if ((basename = strrchr(filename, '/')) != NULL)
+        basename++;
+    else
+        basename = filename;
+
+    /* find old extension */
+    if ((oldext = strrchr(filename, '.')) == NULL)
+        return NULL;
+
+    /* create new filename */
+    result = g_malloc(oldext - filename + strlen(extension) + 1);
+    g_return_val_if_fail(result != NULL, NULL);
+
+    strncpy(result, filename, oldext - filename)[oldext - filename] = '\0';
+    strcat(result, extension);
+
+    return result;
+}
+
+/* }}} */
+
 
 /* vim: set ts=8 sw=4 et: */
 /* vim600: set fdm=marker fdc=3: */

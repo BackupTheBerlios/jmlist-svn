@@ -85,6 +85,10 @@ AC_FUNC_STRTOD
 AC_CHECK_FUNCS([geteuid getuid localtime_r memset mtrace setlocale setregid strchr strerror strrchr strtol __secure_getenv])
 
 
+### Directory paths.
+CPPFLAGS="$CPPFLAGS -DDATADIR='\"$datadir\"'"
+
+
 ### Output.
 AC_CONFIG_FILES([
 	Makefile

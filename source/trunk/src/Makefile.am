@@ -14,8 +14,9 @@ jmlist_SOURCES = \
         directory.c             directory.h             \
         file.c                  file.h                  \
         file-mpeg.c             file-mpeg.h             \
-        file-mpeg-id3v1.c       file-mpeg-id3v1.h	\
-        file-mpeg-id3v2.c       file-mpeg-id3v2.h
+        file-mpeg-id3v1.c       file-mpeg-id3v1.h       \
+        file-mpeg-id3v2.c       file-mpeg-id3v2.h       \
+        style.c                 style.h
 
 if !HAVE_LIBPOPT
 INCLUDES += -I$(top_builddir)/lib/popt

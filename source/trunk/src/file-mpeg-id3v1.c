@@ -29,7 +29,18 @@ struct ID3v1Tag_struct {
 ID3v1Tag;
 
 
-G_INLINE_FUNC gchar *
+/* parse_field() {{{ */
+/**
+ * Parse data from an ID3v1 field.
+ * Data is converted to UTF-8 if it is not already.
+ *
+ * \param field Tag field text.
+ * \param sz Size of this field.
+ * \returns A newly allocated string containing the text from this field in
+ *      UTF-8 encoding.
+ */
+
+static inline gchar *
 parse_field(gchar *field, gsize sz)
 {
     gchar buffer[256] = "";
@@ -68,6 +79,15 @@ parse_field(gchar *field, gsize sz)
     return r;
 }
 
+/* }}} */
+
+/* id3v1_parse() {{{ */
+/**
+ * Parse an ID3v1 tag.
+ *
+ * \param fp File which will be parsed.
+ * \returns A XML tree representing the tag data.
+ */
 
 xmlNodePtr
 id3v1_parse(FILE *fp)
@@ -118,6 +138,7 @@ id3v1_parse(FILE *fp)
     return tag_node;
 }
 
+/* }}} */
 
 
 /* vim: set ts=8 sw=4 et: */

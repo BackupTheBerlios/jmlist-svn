@@ -17,7 +17,7 @@
 enum { ID3V1_TAG_LENGTH = 128 };
 
 
-xmlNodePtr id3v1_parse(FILE *fp);
+extern xmlNodePtr       id3v1_parse(FILE *fp);
 
 
 #endif	/* FILE_MPEG_ID3V1_H */

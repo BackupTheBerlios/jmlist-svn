@@ -15,9 +15,10 @@
 
 #include "file.h"
 
-void mpeg_init(void);
 
-gboolean mpeg_proc(xmlNodePtr file_node, FILE *fp);
+extern void             mpeg_init(void);
+extern gboolean         mpeg_proc(xmlNodePtr file_node, FILE *fp);
+
 
 #endif	/* FILE_MPEG_H */
 
