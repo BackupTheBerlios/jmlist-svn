@@ -13,6 +13,7 @@
 #include "common.h"
 #include "directory.h"
 
+#include "main.h"
 #include "file.h"
 
 
@@ -34,6 +35,9 @@ directory_proc(const gchar *real_path, const gchar *dir_name)
 
     if (dir != NULL) {                  /* g_dir_open() succeeded */
         const gchar *entry;
+
+        if (opt_verbose)
+            g_printerr("Processing \"%s\"...\n", real_path);
 
         /* visit each directory entry */
         while ((entry = g_dir_read_name(dir)) != NULL) {
@@ -61,7 +65,7 @@ directory_proc(const gchar *real_path, const gchar *dir_name)
         xmlNodePtr comment = xmlNewComment("error opening directory");
         xmlAddChild(dir_node, comment);
 
-        g_printerr("%s: %s\n", real_path, g_strerror(errno));
+        g_warning("%s: %s", real_path, g_strerror(errno));
     }
 
     g_free(dir_name_utf8);              /* free UTF-8 converted filename */

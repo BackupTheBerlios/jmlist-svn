@@ -11,6 +11,8 @@ ChangeLog for jMList - Media file listing generator
       Added a XSLT stylesheet to produce a XHTML page of a media library
       in a collapsible tree format. Uses CSS and Javascript. Very nice
       output.
+   * main.c, file.c, directory.c:
+      Added --verbose option.
 
 ** 2005 Feb 16 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
    * file.c, file-mpeg.c, file-mpeg-id3v1.c, file-mpeg-id3v2.c:

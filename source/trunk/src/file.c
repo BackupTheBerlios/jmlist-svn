@@ -96,7 +96,7 @@ file_proc(const gchar *real_path,
             xmlNodePtr comment = xmlNewComment("error opening file");
             xmlAddChild(file_node, comment);
 
-            g_printerr("%s: %s\n", real_path, g_strerror(errno));
+            g_warning("%s: %s", real_path, g_strerror(errno));
         }
 
     }

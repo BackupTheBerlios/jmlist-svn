@@ -13,7 +13,7 @@
 #ifndef MAIN_H
 #define MAIN_H
 
-
+extern int opt_verbose;
 
 
 #endif	/* MAIN_H */

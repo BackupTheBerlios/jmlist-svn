@@ -20,6 +20,9 @@
 #include <popt.h>
 
 
+int opt_verbose = FALSE;
+
+
 int
 main(int argc, char **argv)
 {
@@ -43,6 +46,10 @@ main(int argc, char **argv)
     };
 
     struct poptOption options[] = {
+        {
+            "verbose", 'v', POPT_ARG_NONE, &opt_verbose, 0,
+            "Display progress while scanning directories"
+        },
         {
             "version", 0, POPT_ARG_NONE, NULL, OPT_VERSION,
             "Display version information"
@@ -127,11 +134,17 @@ main(int argc, char **argv)
 
 
     /* Output the resulting XML document. */
+    if (opt_verbose)
+        g_printerr("Generating XML output...\n");
+
     xmlSaveFormatFileEnc(opt_output ? opt_output : "-", doc, "UTF-8", 1);
 
     xmlFreeDoc(doc);
 
     xmlCleanupParser();
+
+    if (opt_verbose)
+        g_printerr("Done.\n");
 
     return EXIT_SUCCESS;
 }
