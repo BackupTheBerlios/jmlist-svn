@@ -62,6 +62,31 @@ PKG_CHECK_MODULES(PACKAGE, [$pkg_modules])
 # id3lib (http://id3tag.sourceforge.net/)
 ID3LIB_CHECK([3.8.0])
 
+# libogg (http://www.xiph.org/)
+# libvorbis (http://www.xiph.org/)
+ogg_support=no
+vorbis_support=no
+
+XIPH_PATH_OGG([
+    ogg_support=yes
+    AC_DEFINE([HAVE_LIBOGG], [1],
+	[Define to 1 if you have the ogg library (-logg).])
+])
+
+if test _$ogg_support = _yes; then
+    XIPH_PATH_VORBIS([
+	vorbis_support=yes
+	AC_DEFINE([HAVE_LIBVORBIS], [1],
+	    [Define to 1 if you have the vorbis library (-lvorbis).])
+    ])
+fi
+
+if test _$ogg_support != _yes; then AC_MSG_WARN([OGG support disabled.]); fi
+if test _$vorbis_support != _yes; then AC_MSG_WARN([OGG Vorbis support disabled.]); fi
+
+AM_CONDITIONAL([HAVE_LIBOGG], [test _$ogg_support = _yes])
+AM_CONDITIONAL([HAVE_LIBVORBIS], [test _$vorbis_support = _yes])
+
 
 ### GCC defaults
 CFLAGS="$CFLAGS -Wall"

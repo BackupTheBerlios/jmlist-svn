@@ -350,6 +350,10 @@ xing_decode(const guchar *fhdr, const MPEGInfo *mpeg, XingInfo *xing)
 /* mpeg_proc(file_node, fp) {{{ */
 /**
  * Process a MPEG Audio file.
+ *
+ * \param file_node XML node where stream information should be inserted.
+ * \param fp Pointer to an open file.
+ * \returns TRUE if successful.
  */
 
 gboolean
@@ -358,27 +362,30 @@ mpeg_proc(xmlNodePtr file_node,
 {
     gint skid = 1048576;
 
-    xmlNodePtr audio_stream_node, tag_node;
+    xmlNodePtr audio_stream_node, id3_node = NULL, id3v2_node = NULL;
     MPEGInfo mpeg;
     glong file_size, stream_size;
     guint32 hdr;
     guchar fhdr[MPEG_MAX_FRAME_SIZE], tmp_char;
-
+    gchar tmp[64];
 
     /* find file size */
     fseek(fp, 0, SEEK_END);
     file_size = ftell(fp);
 
     /* check for a possible ID3v2 tag */
-    if ((tag_node = id3v2_parse(fp)) != NULL)
-        xmlAddChild(file_node, tag_node);
+    id3v2_node = id3v2_parse(fp);
 
     /* get stream size (discount id3 tags) */
     stream_size = file_size - ftell(fp);
 
     /* read and parse the MPEG header */
-    if (fread(&hdr, sizeof hdr, 1, fp) != 1)
+    if (fread(&hdr, sizeof hdr, 1, fp) != 1) {
+        if (id3v2_node != NULL)
+            xmlFreeNode(id3v2_node);
+
         return FALSE;
+    }
 
     hdr = GUINT32_FROM_BE(hdr);
 
@@ -389,11 +396,28 @@ mpeg_proc(xmlNodePtr file_node,
          * file with a mp3 extension. We stop searching for mpeg header if
          * we skid for more than 1MB.
          */
-        if (--skid <= 0 || fread(&tmp_char, 1, 1, fp) != 1)
+        if (--skid <= 0 || fread(&tmp_char, 1, 1, fp) != 1) {
+            if (id3v2_node != NULL)
+                xmlFreeNode(id3v2_node);
+
             return FALSE;
+        }
 
         hdr = (hdr << CHAR_BIT) | tmp_char;
     }
+
+    /* create and initialize <audio-stream /> element */
+    audio_stream_node = xmlNewChild(file_node, NULL, "audio-stream", NULL);
+    xmlNewProp(audio_stream_node, "format", "mpeg");
+
+    g_snprintf(tmp, sizeof tmp, "%d", mpeg.version + 1);
+    xmlNewProp(audio_stream_node, "mpeg", tmp);
+
+    g_snprintf(tmp, sizeof tmp, "%d", mpeg.layer + 1);
+    xmlNewProp(audio_stream_node, "layer", tmp);
+
+    if (id3v2_node != NULL)
+        xmlAddChild(audio_stream_node, id3v2_node);
 
     /* compute song length */
     mpeg.vbr = FALSE;
@@ -419,8 +443,8 @@ mpeg_proc(xmlNodePtr file_node,
         }
 
         /* parse ID3v1 tag */
-        if ((tag_node = id3v1_parse(fp)) != NULL) {
-            xmlAddChild(file_node, tag_node);
+        if ((id3_node = id3v1_parse(fp)) != NULL) {
+            xmlAddChild(audio_stream_node, id3_node);
             stream_size -= ID3V1_TAG_LENGTH;
         }
 
@@ -433,38 +457,25 @@ mpeg_proc(xmlNodePtr file_node,
         mpeg.length = mpeg.frames * tpf * 1000;
     }
 
-    /* create and initialize <audio-stream /> element */
-    {
-        gchar tmp[64];
+    /* add information about the audio stream */
+    if (mpeg.bitrate != 0) {
+        g_snprintf(tmp, sizeof tmp, "%s%d", mpeg.vbr ? "~" : "", mpeg.bitrate);
+        xmlNewProp(audio_stream_node, "bitrate", tmp);
+    }
 
-        audio_stream_node = xmlNewChild(file_node, NULL, "audio-stream", NULL);
-        xmlNewProp(audio_stream_node, "format", "mpeg");
+    g_snprintf(tmp, sizeof tmp, "%d", mpeg.sampling);
+    xmlNewProp(audio_stream_node, "sample", tmp);
 
-        g_snprintf(tmp, sizeof tmp, "%d", mpeg.version + 1);
-        xmlNewProp(audio_stream_node, "mpeg", tmp);
+    xmlNewProp(audio_stream_node, "mode", channel_modes[mpeg.mode]);
 
-        g_snprintf(tmp, sizeof tmp, "%d", mpeg.layer + 1);
-        xmlNewProp(audio_stream_node, "layer", tmp);
+    if (mpeg.frames != 0) {
+        g_snprintf(tmp, sizeof tmp, "%d", mpeg.frames);
+        xmlNewProp(audio_stream_node, "frames", tmp);
+    }
 
-        if (mpeg.bitrate != 0) {
-            g_snprintf(tmp, sizeof tmp, "%s%d", mpeg.vbr ? "~" : "", mpeg.bitrate);
-            xmlNewProp(audio_stream_node, "bitrate", tmp);
-        }
-
-        g_snprintf(tmp, sizeof tmp, "%d", mpeg.sampling);
-        xmlNewProp(audio_stream_node, "sample", tmp);
-
-        xmlNewProp(audio_stream_node, "mode", channel_modes[mpeg.mode]);
-
-        if (mpeg.frames != 0) {
-            g_snprintf(tmp, sizeof tmp, "%d", mpeg.frames);
-            xmlNewProp(audio_stream_node, "frames", tmp);
-        }
-
-        if (mpeg.length != 0) {
-            g_snprintf(tmp, sizeof tmp, "%d", mpeg.length);
-            xmlNewProp(audio_stream_node, "length", tmp);
-        }
+    if (mpeg.length != 0) {
+        g_snprintf(tmp, sizeof tmp, "%d", mpeg.length);
+        xmlNewProp(audio_stream_node, "length", tmp);
     }
 
     return TRUE;

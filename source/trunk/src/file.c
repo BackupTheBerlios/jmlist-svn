@@ -15,6 +15,7 @@
 #include "common.h"
 #include "file.h"
 #include "file-mpeg.h"
+#include "file-vorbis.h"
 
 
 typedef
@@ -155,6 +156,10 @@ void
 file_parser_init_all(void)
 {
     mpeg_init();
+
+#if HAVE_LIBVORBIS
+    vorbis_init();
+#endif
 }
 
 /* }}} */

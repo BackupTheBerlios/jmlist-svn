@@ -2,8 +2,8 @@
 
 AUTOMAKE_OPTIONS = 1.8
 
-INCLUDES = @PACKAGE_CFLAGS@
-LDADD = @PACKAGE_LIBS@
+INCLUDES = @PACKAGE_CFLAGS@ @OGG_CFLAGS@ @VORBIS_CFLAGS@
+LDADD = @PACKAGE_LIBS@ @OGG_LIBS@ @VORBIS_LIBS@ @VORBISFILE_LIBS@
 
 bin_PROGRAMS = jmlist
 
@@ -17,6 +17,10 @@ jmlist_SOURCES = \
         file-mpeg-id3v1.c       file-mpeg-id3v1.h       \
         file-mpeg-id3v2.c       file-mpeg-id3v2.h       \
         style.c                 style.h
+
+if HAVE_LIBVORBIS
+jmlist_SOURCES += file-vorbis.c file-vorbis.h
+endif
 
 if !HAVE_LIBPOPT
 INCLUDES += -I$(top_builddir)/lib/popt

@@ -26,9 +26,9 @@ Artist             | Title              | File
 -------------------+--------------------+---------------------------------------
 </xsl:text>
 <xsl:for-each select="descendant::file">
-<xsl:value-of select="substring(concat(tag/artist, '                   '), 1, 18)"/>
+<xsl:value-of select="substring(concat(.//tag/artist, '                   '), 1, 18)"/>
 <xsl:text> | </xsl:text>
-<xsl:value-of select="substring(concat(tag/title, '                   '), 1, 18)"/>
+<xsl:value-of select="substring(concat(.//tag/title, '                   '), 1, 18)"/>
 <xsl:text> | </xsl:text>
 <xsl:value-of select="@name"/><xsl:text>
 </xsl:text></xsl:for-each>
