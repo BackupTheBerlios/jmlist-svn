@@ -7,6 +7,7 @@ ACLOCAL_AMFLAGS = -I m4
 SUBDIRS = lib src styles doc
 DIST_SUBDIRS = $(SUBDIRS)
 
+EXTRA_DIST = Doxyfile
 
 .PHONY: docs
 docs: Doxyfile
