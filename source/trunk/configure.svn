@@ -7,8 +7,8 @@ echo "***   - automake 1.8 or better"
 echo "***   - autoconf 2.59 or better"
 
 echo
-echo "*** Running \`aclocal'..."
-aclocal
+echo "*** Running \`aclocal -I m4'..."
+aclocal -I m4
 
 echo
 echo "*** Running \`autoheader'..."
