@@ -1,0 +1,19 @@
+ChangeLog for jMList - Media file listing generator
+===================================================
+
+** 2005 Feb 16 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   * file.c, file-mpeg.c, file-mpeg-id3v1.c, file-mpeg-id3v2.c:
+      Using glib way for declaring inline functions.
+   * configure.ac, lib/popt/:
+      Added a reduced popt library to the package, that should be used if
+      the user system doesn't have it installed.
+
+
+[ Version 0.0.1 ]
+** 2005 Feb 12 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   ### Initial 0.0.1 release.
+
+
+===
+ vim: set ft=changelog sw=3 ts=3 et:
+ vim600: set fdm=expr fdc=2 fde=getline(v\:lnum)=~'^\\*\\*'?'>1'\:getline(v\:lnum)=~'^\\s\\{3}'\|\|getline(v\:lnum)==\"\"&&getline(v\:lnum-1)=~'^\\s\\{3}'?1\:0 :

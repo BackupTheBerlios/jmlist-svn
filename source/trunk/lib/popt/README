@@ -1,0 +1,14 @@
+These files are part of the popt library, which is Copyright (c) 1998 - Red
+Hat Software. See included COPYING file for copyright and licensing
+information regarding these files.
+
+More information about popt can be found on the following website:
+http://directory.fsf.org/libs/popt.html
+
+
+These files were obtained from the popt repository at cvs.rpm.org. The
+commands used to retrieve them were:
+
+cvs -d :pserver:anonymous@cvs.rpm.org:/cvs/devel login
+cvs -d :pserver:anonymous@cvs.rpm.org:/cvs/devel co -d popt-cvs rpm/popt
+

@@ -17,3 +17,9 @@ jmlist_SOURCES = \
         file-mpeg-id3v1.c       file-mpeg-id3v1.h	\
         file-mpeg-id3v2.c       file-mpeg-id3v2.h
 
+if !HAVE_LIBPOPT
+INCLUDES += -I$(top_builddir)/lib/popt
+jmlist_LDADD = $(LDADD) $(top_builddir)/lib/popt/libpopt.a
+else
+jmlist_LDADD = $(LDADD)
+endif

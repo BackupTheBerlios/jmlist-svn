@@ -2,4 +2,10 @@
 
 AUTOMAKE_OPTIONS = 1.8
 
+SUBDIRS =
+
+if !HAVE_LIBPOPT
+SUBDIRS += popt
+endif
+
 dummy:
