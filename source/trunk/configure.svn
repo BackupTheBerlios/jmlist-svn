@@ -7,22 +7,22 @@ echo "***   - automake 1.8 or better"
 echo "***   - autoconf 2.59 or better"
 
 echo
-echo "*** Running \`aclocal\'..."
+echo "*** Running \`aclocal'..."
 aclocal
 
 echo
-echo "*** Running \`autoheader\'..."
+echo "*** Running \`autoheader'..."
 autoheader
 
 echo
-echo "*** Running \`automake --gnu --add-missing\'..."
+echo "*** Running \`automake --gnu --add-missing'..."
 automake --gnu --add-missing
 
 echo
-echo "*** Running \`autoconf\'..."
+echo "*** Running \`autoconf'..."
 autoconf
 
 echo
-echo "*** Development support files created. Now run \`./configure\'."
-echo "*** Suggestion: \`./configure --enable-maintainer-mode\'. To see which other"
-echo "    options are available, try \`./configure --help\'."
+echo "*** Development support files created. Now run \`./configure'."
+echo "*** Suggestion: \`./configure --enable-maintainer-mode'. To see which other"
+echo "    options are available, try \`./configure --help'."
