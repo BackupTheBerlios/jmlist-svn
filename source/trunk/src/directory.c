@@ -25,14 +25,18 @@
  *
  * \param real_path Real path to the directory.
  * \param dir_name Directory name, the last component of its path.
+ * \param accum Parameter to add accumulated size/length data.
  * \returns A newly allocated xmlNodePtr.
  */
 xmlNodePtr
-directory_proc(const gchar *real_path, const gchar *dir_name)
+directory_proc(const gchar *real_path,
+               const gchar *dir_name,
+               DirAccumData *parent_accum)
 {
+    DirAccumData accum = { 0, 0 };
     xmlNodePtr dir_node;
     GDir *dir;
-    gchar *dir_name_utf8;
+    gchar *dir_name_utf8, tmp[64];
 
     /* create directory node */
     dir_node = xmlNewNode(NULL, "directory");
@@ -52,13 +56,14 @@ directory_proc(const gchar *real_path, const gchar *dir_name)
             gchar *full_name = g_build_filename(real_path, entry, NULL);
 
             if (g_file_test(full_name, G_FILE_TEST_IS_DIR)) {
-                xmlNodePtr subdir_node = directory_proc(full_name, entry);
+                xmlNodePtr subdir_node = directory_proc(full_name, entry,
+                                                        &accum);
 
                 if (subdir_node != NULL)
                     xmlAddChild(dir_node, subdir_node);
             }
             else if (g_file_test(full_name, G_FILE_TEST_IS_REGULAR)) {
-                xmlNodePtr file_node = file_proc(full_name, entry);
+                xmlNodePtr file_node = file_proc(full_name, entry, &accum);
 
                 if (file_node != NULL)
                     xmlAddChild(dir_node, file_node);
@@ -75,6 +80,17 @@ directory_proc(const gchar *real_path, const gchar *dir_name)
 
         g_warning("%s: %s", real_path, g_strerror(errno));
     }
+
+    if (parent_accum != NULL) {
+        parent_accum->size_in_bytes += accum.size_in_bytes;
+        parent_accum->length_in_ms += accum.length_in_ms;
+    }
+
+    g_snprintf(tmp, sizeof tmp, "%" G_GUINT32_FORMAT, accum.length_in_ms);
+    xmlNewProp(dir_node, "length", tmp);
+
+    g_snprintf(tmp, sizeof tmp, "%" G_GUINT64_FORMAT, accum.size_in_bytes);
+    xmlNewProp(dir_node, "size", tmp);
 
     g_free(dir_name_utf8);              /* free UTF-8 converted filename */
     return dir_node;

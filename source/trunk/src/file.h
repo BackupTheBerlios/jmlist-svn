@@ -15,6 +15,8 @@
 #ifndef FILE_H
 #define FILE_H
 
+#include "directory.h"
+
 
 typedef
 enum FileType_enum {
@@ -24,10 +26,10 @@ enum FileType_enum {
 FileType;
 
 
-typedef gboolean FileParserFunc(xmlNodePtr file_node, FILE *fp);
+typedef gboolean FileParserFunc(xmlNodePtr file_node, FILE *fp, guint32 *length);
 
 
-extern xmlNodePtr       file_proc(const gchar *real_path, const gchar *file_name);
+extern xmlNodePtr       file_proc(const gchar *real_path, const gchar *file_name, DirAccumData *accum);
 extern gint             file_parser_register(const gchar *name, const gchar **extensions, FileType type, FileParserFunc *func);
 extern void             file_parser_init_all(void);
 extern const gchar *    filename_get_extension(const gchar *filename);

@@ -16,7 +16,15 @@
 #define DIRECTORY_H
 
 
-extern xmlNodePtr       directory_proc(const gchar *real_path, const gchar *dir_name);
+typedef
+struct DirAccumData_struct {
+    guint64 size_in_bytes;
+    guint32 length_in_ms;
+}
+DirAccumData;
+
+
+extern xmlNodePtr       directory_proc(const gchar *real_path, const gchar *dir_name, DirAccumData *parent_accum);
 
 
 #endif	/* DIRECTORY_H */

@@ -353,12 +353,14 @@ xing_decode(const guchar *fhdr, const MPEGInfo *mpeg, XingInfo *xing)
  *
  * \param file_node XML node where stream information should be inserted.
  * \param fp Pointer to an open file.
+ * \param length Optional pointer to a variable to fill with song length.
  * \returns TRUE if successful.
  */
 
 gboolean
 mpeg_proc(xmlNodePtr file_node,
-          FILE *fp)
+          FILE *fp,
+          guint32 *length)
 {
     gint skid = 1048576;
 
@@ -486,6 +488,9 @@ mpeg_proc(xmlNodePtr file_node,
     if (mpeg.length != 0) {
         g_snprintf(tmp, sizeof tmp, "%u", mpeg.length);
         xmlNewProp(audio_stream_node, "length", tmp);
+
+        if (length != NULL)
+            *length += mpeg.length;
     }
 
     return TRUE;

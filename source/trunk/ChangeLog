@@ -2,9 +2,11 @@ ChangeLog for jMList - Media file listing generator
 ===================================================
 
 ** 2005 Apr  3 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
-   * configure.ac, file.c, main.c:
+   * configure.ac, file.c, main.c, file-mpeg.c:
       Large file support.
 
+   * directory.c, file.c, file-mpeg.c, file-vorbis.c, main.c:
+      Accumulative size and length for directories.
 
 [ Version 0.1.0 ]
 ** 2005 Mar 26 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>

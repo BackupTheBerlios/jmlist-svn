@@ -42,7 +42,8 @@ file_parser_get_by_extension(const gchar *extension);
  */
 xmlNodePtr
 file_proc(const gchar *real_path,
-          const gchar *file_name)
+          const gchar *file_name,
+          DirAccumData *accum)
 {
     gchar *file_name_utf8;
     const gchar *file_extension;
@@ -78,12 +79,14 @@ file_proc(const gchar *real_path,
             file_size = ftell(fp);
 #endif
 
+            accum->size_in_bytes += file_size;
+
             g_snprintf(size_string, sizeof size_string, "%" G_GUINT64_FORMAT, file_size);
             xmlNewProp(file_node, "size", size_string);
 
             /* parse (or at least try to) the file */
             rewind(fp);
-            parser->func(file_node, fp);
+            parser->func(file_node, fp, &accum->length_in_ms);
         }
         else {                          /* fopen() returned NULL */
             xmlNodePtr comment = xmlNewComment("error opening file");

@@ -19,7 +19,7 @@
 
 
 extern void             mpeg_init(void);
-extern gboolean         mpeg_proc(xmlNodePtr file_node, FILE *fp);
+extern gboolean         mpeg_proc(xmlNodePtr file_node, FILE *fp, guint32 *length);
 
 
 #endif	/* FILE_MPEG_H */

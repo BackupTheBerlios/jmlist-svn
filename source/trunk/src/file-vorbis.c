@@ -65,15 +65,18 @@ vorbis_init(void)
  *
  * \param file_node XML node where stream information should be inserted.
  * \param fp Pointer to an open file.
+ * \param length Optional pointer to a variable to fill with song length.
  * \returns TRUE if successful.
  */
 
 gboolean
 vorbis_proc(xmlNodePtr file_node,
-            FILE *fp)
+            FILE *fp,
+            guint32 *length)
 {
     OggVorbis_File file;
-    int link, i;
+    gint link, i;
+    guint32 local_length = 0;
 
     if (ov_open(fp, &file, NULL, 0) != 0)
         return FALSE;
@@ -111,8 +114,8 @@ vorbis_proc(xmlNodePtr file_node,
                    vi->channels == 1 ? "mono" :
                    vi->channels == 2 ? "stereo" : "stereo+" );
 
-        g_snprintf(tmp, sizeof tmp, "%d",
-                   (int)(ov_time_total(&file, link) * 1000));
+        local_length = ov_time_total(&file, link) * 1000;
+        g_snprintf(tmp, sizeof tmp, "%" G_GUINT32_FORMAT, local_length);
         xmlNewProp(audio_stream_node, "length", tmp);
 
         /* add information of vorbis comment (in other words, "tag") */
@@ -126,6 +129,10 @@ vorbis_proc(xmlNodePtr file_node,
             while ((str = vorbis_comment_query(vc, (gchar *)vc_fields[i].field, j++)) != NULL)
                 xmlNewTextChild(tag_node, NULL, vc_fields[i].name, str);
         }
+
+        /* update accumulated data */
+        if (length != NULL)
+            *length += local_length;
     }
 
     ov_clear(&file);

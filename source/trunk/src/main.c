@@ -179,7 +179,7 @@ main(int argc, char **argv)
         current_dir = g_get_current_dir();
         dir_name = g_path_get_basename(current_dir);
 
-        dir = directory_proc(".", dir_name);
+        dir = directory_proc(".", dir_name, NULL);
         xmlAddChild(root_node, dir);
 
         g_free(dir_name);
@@ -194,7 +194,7 @@ main(int argc, char **argv)
 
             dir_name = g_path_get_basename(*arg);
 
-            dir = directory_proc(*arg, dir_name);
+            dir = directory_proc(*arg, dir_name, NULL);
             xmlAddChild(root_node, dir);
 
             g_free(dir_name);
