@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #ifndef FILE_H
 #define FILE_H
 

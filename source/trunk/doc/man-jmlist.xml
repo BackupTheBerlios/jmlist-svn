@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<refentry id="jmlist-man-jmlist">
+  <refentryinfo>
+    <date>February 2005</date>
+    <author>
+      <firstname>Juliano</firstname>
+      <othername>Ravasi</othername>
+      <surname>Ferraz</surname>
+    </author>
+    <copyright>
+      <year>2005</year>
+      <holder>Juliano Ravasi Ferraz</holder>
+    </copyright>
+  </refentryinfo>
+
+  <refmeta>
+    <refentrytitle>jmlist</refentrytitle>
+    <manvolnum>1</manvolnum>
+  </refmeta>
+
+  <!-- ================================================================== -->
+  <!-- ============================== NAME ============================== -->
+  <!-- ================================================================== -->
+
+  <refnamediv id="jmlist-man-jmlist-sect-1">
+    <refname>jmlist</refname>
+    <refpurpose>generates media listings in XML and other formats</refpurpose>
+  </refnamediv>
+
+  <!-- ================================================================== -->
+  <!-- ============================ SYNOPSYS ============================ -->
+  <!-- ================================================================== -->
+
+  <refsynopsisdiv id="jmlist-man-jmlist-sect-2">
+    <cmdsynopsis>
+      <!-- command name -->
+      <command>jmlist</command>
+
+      <!-- help options -->
+      <arg><option>--usage</option></arg>
+      <group>
+        <arg><option>-?</option></arg>
+        <arg><option>--help</option></arg>
+      </group>
+      <arg><option>--version</option></arg>
+
+      <!-- general options -->
+      <arg><option>--list-styles</option></arg>
+      <group>
+        <arg><option>-v</option></arg>
+        <arg><option>--verbose</option></arg>
+      </group>
+
+      <!-- output options -->
+      <group>
+        <arg><option>-o</option> <replaceable>FILE</replaceable></arg>
+        <arg><option>--output</option> <replaceable>FILE</replaceable></arg>
+      </group>
+      <group>
+        <arg><option>-s</option> <replaceable>STYLE</replaceable></arg>
+        <arg><option>--style</option> <replaceable>STYLE</replaceable></arg>
+      </group>
+
+      <!-- other arguments -->
+      <arg rep='repeat'><replaceable>DIRECTORY</replaceable></arg>
+    </cmdsynopsis>
+  </refsynopsisdiv>
+
+  <!-- ================================================================== -->
+  <!-- =========================== DESCRIPTION ========================== -->
+  <!-- ================================================================== -->
+
+  <refsect1 id="jmlist-man-jmlist-sect-3">
+    <title>Description</title>
+
+    <para>
+      &jmlist; scans one or more directories for media files (currently only
+      audio files) and generates a &a.xml; listing of the whole directory
+      tree with information about each media file such as filesize, song
+      length, title, author, album, etc. A &a.xsl; stylesheet can be applied
+      to the output to transform into a different output, like tabular or
+      tree listings in plain text, &a.xml;, &a.html;, &a.rdf;, &a.rss; or any
+      other &a.xml; format.
+    </para>
+
+    <para>
+      &jmlist; should be invoked by passing one or more directory paths on
+      its command line. For each directory passed, it will be scanned
+      recursively for media files. Each file whose extension is known to
+      &jmlist; is parsed in order to extract information about its content
+      type and length, and tagged meta-information.
+    </para>
+  </refsect1>
+
+  <!-- ================================================================== -->
+  <!-- ============================= OPTIONS ============================ -->
+  <!-- ================================================================== -->
+
+  <refsect1 id="jmlist-man-jmlist-sect-4">
+    <title>Options</title>
+
+    <variablelist>
+      <para>
+        &jmlist; accepts the following options:
+      </para>
+
+      <!-- help options -->
+      <varlistentry>
+        <term><option>--usage</option></term>
+        <listitem>
+          <para>
+            Show a brief summary of all options that my be passed to &jmlist;.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-?</option></term>
+        <term><option>--help</option></term>
+        <listitem>
+          <para>
+            Show a summary of all options that may be passed to &jmlist;. If a
+            <option>--style</option> option was passed previously with a valid
+            stylesheet, the options that control the processing and output of
+            that stylesheet is also included in the output.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>--version</option></term>
+        <listitem>
+          <para>
+            Print &jmlist; version information to the standard output,
+            including website and copyright, and exit.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <!-- general options -->
+      <varlistentry>
+        <term><option>--list-styles</option></term>
+        <listitem>
+          <para>
+            List all available stylesheets found both on system and user
+            style directories and exit. The names listed by this command are
+            suitable to the <option>--style</option> option.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-v</option></term>
+        <term><option>--verbose</option></term>
+        <listitem>
+          <para>
+            Print progress information while &jmlist; is doing its work, so
+            you have something to watch.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <!-- output options -->
+      <varlistentry>
+        <term><option>-s</option> <replaceable>STYLE</replaceable></term>
+        <term><option>--style</option> <replaceable>STYLE</replaceable></term>
+        <listitem>
+          <para>
+            Apply a stylesheet to the output. This is the option you should
+            use to get some useable output from &jmlist;. If you omit this
+            option, &jmlist; will output a raw &a.xml; tree. Available style
+            names are listed by the <option>--list-styles</option> option.
+          </para>
+          <para>
+            Stylesheets are &a.xsl; Tranform files that transforms the raw
+            &a.xml; tree generated by &jmlist; into another different, either
+            text or markup, document. Some stylesheets are provided along with
+            &jmlist;, and you can write your own ones and install them on
+            your user style directory.
+          </para>
+          <para>
+            If there are stylesheets with the same name installed on both
+            user and system directories, the ones on your user directory
+            take precedence.
+          </para>
+          <para>
+            Some stylesheets add specific command-line options to &jmlist;
+            when loaded. By feeding data through these options, you may change
+            how the output document is formatted. To list the additional
+            options provided by a stylesheet, use the <option>--help</option>
+            option after loading an stylesheet. For example:
+          </para>
+          <informalexample>
+            <synopsis><command>jmlist</command> <option>--style</option> <filename>xhtml-collapsible</filename> <option>--help</option></synopsis>
+          </informalexample>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-o</option> <replaceable>FILE</replaceable></term>
+        <term><option>--output</option> <replaceable>FILE</replaceable></term>
+        <listitem>
+          <para>
+            Output the resulting document to the given file. If you omit this
+            option, the result is printed on the standard output.
+          </para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </refsect1>
+
+
+  <!-- ================================================================== -->
+  <!-- ============================== FILES ============================= -->
+  <!-- ================================================================== -->
+
+  <refsect1 id="jmlist-man-jmlist-sect-5">
+    <title>Files</title>
+
+    <variablelist>
+      <para>
+        The following files and directories are used by &jmlist;:
+      </para>
+
+      <varlistentry>
+        <term><filename>~/.jmlist/</filename></term>
+        <listitem>
+          <para>
+            Personal user configuration and support files.
+          </para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><filename>~/.jmlist/styles/</filename></term>
+        <listitem>
+          <para>
+            User stylesheet directory.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </refsect1>
+
+  <!-- ================================================================== -->
+  <!-- ============================== BUGS ============================== -->
+  <!-- ================================================================== -->
+
+  <refsect1 id="jmlist-man-jmlist-sect-6">
+    <title>Bugs</title>
+
+    <para>
+      Report bugs to our
+      <ulink url="http://developer.berlios.de/bugs/?group_id=3105">bugtracker</ulink>.
+    </para>
+  </refsect1>
+
+  <!-- ================================================================== -->
+  <!-- ============================= WEBSITE ============================ -->
+  <!-- ================================================================== -->
+
+  <refsect1 id="jmlist-man-jmlist-sect-7">
+    <title>Website</title>
+
+    <para>
+      <ulink url="http://jmlist.berlios.de">&jmlist; website</ulink>.
+    </para>
+  </refsect1>
+
+  <!-- ================================================================== -->
+  <!-- ============================ COPYRIGHT =========================== -->
+  <!-- ================================================================== -->
+
+  <refsect1 id="jmlist-man-jmlist-sect-8">
+    <title>Copyright</title>
+
+    <simpara>
+      Copyright &copy; Juliano Ravasi Ferraz.
+    </simpara>
+    <simpara>
+      This program is free software; you can redistribute it and/or modify it
+      under the terms of the GNU General Public License as published by the
+      Free Software Foundation; either version 2 of the License, or (at your
+      option) any later version.
+    </simpara>
+    <simpara>
+      This program is distributed in the hope that it will be useful, but
+      WITHOUT ANY WARRANTY; without even the implied warranty of
+      MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+      General Public License for more details.
+    </simpara>
+    <simpara>
+      You should have received a copy of the GNU General Public License along
+      with this program; if not, write to the Free Software Foundation, Inc.,
+      59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    </simpara>
+  </refsect1>
+
+</refentry>
+<!-- vim: set sw=2 et : -->

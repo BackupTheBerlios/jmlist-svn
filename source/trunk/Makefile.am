@@ -4,5 +4,10 @@ AUTOMAKE_OPTIONS = 1.8
 
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = lib src styles
-DIST_SUBDIRS = $(SUBDIRS) doc
+SUBDIRS = lib src styles doc
+DIST_SUBDIRS = $(SUBDIRS)
+
+
+.PHONY: docs
+docs: Doxyfile
+	doxygen Doxyfile

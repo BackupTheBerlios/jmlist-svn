@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #include "common.h"
 #include "file-mpeg-id3v2.h"
 

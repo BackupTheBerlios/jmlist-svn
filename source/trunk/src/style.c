@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #include "common.h"
 #include "style.h"
 #include "file.h"
@@ -69,7 +71,7 @@ get_system_style_dir(void)
  *
  * \param root Root <style-info> XML node.
  * \param style Style object.
- * \returns #TRUE if, and only if, the parsing was successful.
+ * \returns TRUE if, and only if, the parsing was successful.
  */
 
 static gboolean
@@ -156,9 +158,9 @@ parse_xml_style_info(xmlNodePtr root, Style *style)
  *
  * \param filename The full path to the stylesheet file, in filesystem
  *      encoding.
- * \param load_style If #TRUE, the stylesheet data will be loaded also.
+ * \param load_style If TRUE, the stylesheet data will be loaded also.
  *      Otherwise, only general description data is loaded.
- * \returns A new #Style object or NULL on error.
+ * \returns A new Style object or NULL on error.
  */
 
 Style *

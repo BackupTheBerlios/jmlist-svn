@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #include "common.h"
 #include "file-mpeg-id3v1.h"
 
@@ -62,7 +64,7 @@ parse_field(gchar *field, gsize sz)
     }
     else {
         /* try to convert from foreign charset */
-        /* @TODO the list of charsets to try should be customizable */
+        /* TODO: the list of charsets to try should be customizable */
         r = g_convert(buffer, -1, "UTF-8", "ISO8859-1", NULL, NULL, NULL);
 
         if (r == NULL)

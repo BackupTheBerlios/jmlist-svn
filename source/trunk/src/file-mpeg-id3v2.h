@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #ifndef FILE_MPEG_ID3V2_H
 #define FILE_MPEG_ID3V2_H
 

@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #include "common.h"
 #include "file.h"
 #include "file-mpeg.h"
@@ -67,7 +69,7 @@ file_proc(const gchar *real_path,
             gchar size_string[64];
 
             /* retrieve file size */
-            /* @TODO support 64-bit file sizes */
+            /* TODO: support 64-bit file sizes */
             fseek(fp, 0, SEEK_END);
             file_size = ftell(fp);
 
@@ -97,7 +99,7 @@ file_proc(const gchar *real_path,
 /**
  * Register a new file parser plugin.
  *
- * @TODO Use a hash map.
+ * \todo Use a hash map to store and find parsers by extension.
  */
 gint
 file_parser_register(const gchar *name,
@@ -124,7 +126,7 @@ file_parser_register(const gchar *name,
 /**
  * Return the file parser associated to the given extension, if any.
  *
- * @TODO Use a hash map.
+ * \todo Use a hash map to store and find parsers by extension.
  */
 static FileParser *
 file_parser_get_by_extension(const gchar *extension)

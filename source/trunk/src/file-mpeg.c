@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 /*
  * Based on the source code of XMMS <http://www.xmms.org/> and mpg321
  * <http://mpg321.sourceforge.net>, both are distributed under the GNU General

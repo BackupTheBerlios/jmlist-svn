@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #ifndef STYLE_H
 #define STYLE_H
 
@@ -17,13 +19,16 @@
 #include <libxslt/xsltutils.h>
 
 
+/**
+ * Style output types.
+ */
 typedef
 enum StyleOutput_enum {
-    STYLE_OTHER,
-    STYLE_TEXT,
-    STYLE_HTML,
-    STYLE_XHTML,
-    STYLE_XML
+    STYLE_OTHER,                        /**< Generic, other type. */
+    STYLE_TEXT,                         /**< Text output. */
+    STYLE_HTML,                         /**< HTML output. */
+    STYLE_XHTML,                        /**< XHTML output. */
+    STYLE_XML                           /**< XML output. */
 }
 StyleOutput;
 

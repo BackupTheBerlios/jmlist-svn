@@ -10,6 +10,8 @@
  * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
  ******************************************************************************/
 
+/** \file **/
+
 #include "common.h"
 #include "main.h"
 #include "directory.h"
@@ -65,7 +67,7 @@ main(int argc, char **argv)
         },
         {
             "style", 's', POPT_ARG_STRING, &opt_style, OPT_STYLE,
-            "Stylesheet used to format the output", "FILE"
+            "Stylesheet used to format the output", "STYLE"
         },
         POPT_TABLEEND
     };

@@ -39,6 +39,11 @@ AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_RANLIB
 
+AC_PATH_PROG([XSLTPROC], [xsltproc])
+if test "x$XSLTPROC" == "x"; then
+    AC_MSG_ERROR([xsltproc (part of libxslt) not found on \$PATH.])
+fi
+
 
 ### Checks for libraries.
 

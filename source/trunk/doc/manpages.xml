@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN" "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd" [
+<!ENTITY jmlist         "jMList">
+<!ENTITY jmlist.manual  "jMList Manual Pages">
+
+<!ENTITY a.xml          "<acronym>XML</acronym>">
+<!ENTITY a.xsl          "<acronym>XSL</acronym>">
+<!ENTITY a.html         "<acronym>HTML</acronym>">
+<!ENTITY a.xhtml        "<acronym>XHTML</acronym>">
+<!ENTITY a.rdf          "<acronym>RDF</acronym>">
+<!ENTITY a.rss          "<acronym>RSS</acronym>">
+<!ENTITY a.mp3          "<acronym>MP3</acronym>">
+
+<!ENTITY pg01           SYSTEM "man-jmlist.xml">
+]>
+
+<reference>
+
+  <referenceinfo>
+    <title>&jmlist.manual;</title>
+    <productname>&jmlist;</productname>
+  </referenceinfo>
+
+  <title>&jmlist.manual;</title>
+
+  &pg01;
+
+</reference>
+
+<!-- vim: set sw=2 et : -->
