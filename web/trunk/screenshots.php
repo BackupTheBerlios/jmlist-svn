@@ -33,7 +33,8 @@
 			"This is an example of output produced by $_jMList. The ".
 			"stylesheet used was xhtml-collapsible, which generates a ".
 			"tree listing in XHTML using JavaScript to make folders ".
-			"collapsible like in a file manager."
+			"collapsible like in a file manager. It still lacks tag ".
+			"information (title, artist, etc)."
 		).
 		txttag( 'p', array(),
 			a( "Here", 'demo/rclayderman.xml' ).
