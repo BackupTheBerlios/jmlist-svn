@@ -364,20 +364,30 @@ mpeg_proc(xmlNodePtr file_node,
 
     xmlNodePtr audio_stream_node, id3_node = NULL, id3v2_node = NULL;
     MPEGInfo mpeg;
-    glong file_size, stream_size;
+    guint64 file_size, stream_size;
     guint32 hdr;
     guchar fhdr[MPEG_MAX_FRAME_SIZE], tmp_char;
     gchar tmp[64];
 
     /* find file size */
+#if HAVE_FSEEKO
+    fseeko(fp, 0, SEEK_END);
+    file_size = ftello(fp);
+#else
     fseek(fp, 0, SEEK_END);
     file_size = ftell(fp);
+#endif
+
 
     /* check for a possible ID3v2 tag */
     id3v2_node = id3v2_parse(fp);
 
     /* get stream size (discount id3 tags) */
+#if HAVE_FSEEKO
+    stream_size = file_size - ftello(fp);
+#else
     stream_size = file_size - ftell(fp);
+#endif
 
     /* read and parse the MPEG header */
     if (fread(&hdr, sizeof hdr, 1, fp) != 1) {
@@ -469,12 +479,12 @@ mpeg_proc(xmlNodePtr file_node,
     xmlNewProp(audio_stream_node, "mode", channel_modes[mpeg.mode]);
 
     if (mpeg.frames != 0) {
-        g_snprintf(tmp, sizeof tmp, "%d", mpeg.frames);
+        g_snprintf(tmp, sizeof tmp, "%u", mpeg.frames);
         xmlNewProp(audio_stream_node, "frames", tmp);
     }
 
     if (mpeg.length != 0) {
-        g_snprintf(tmp, sizeof tmp, "%d", mpeg.length);
+        g_snprintf(tmp, sizeof tmp, "%u", mpeg.length);
         xmlNewProp(audio_stream_node, "length", tmp);
     }
 
