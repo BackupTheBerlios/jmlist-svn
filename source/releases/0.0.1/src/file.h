@@ -1,0 +1,38 @@
+/******************************************************************************
+ * jMList                                                                     *
+ * Media file listing generator                                               *
+ * http://www.juliano.info/projects/jMList/                                   *
+ ******************************************************************************
+ *   Author: Juliano Ravasi Ferraz <jferraz at users sourceforge net>         *
+ * Language: ANSI C (ISO/IEC 9899:1990)                                       *
+ *  License: GNU General Public License                                       *
+ ******************************************************************************
+ * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
+ ******************************************************************************/
+
+#ifndef FILE_H
+#define FILE_H
+
+
+typedef
+enum FileType_enum {
+    FILE_TYPE_AUDIO,
+    FILE_TYPE_VIDEO
+}
+FileType;
+
+
+typedef gboolean FileParserFunc(xmlNodePtr file_node, FILE *fp);
+
+
+xmlNodePtr file_proc(const gchar *real_path, const gchar *file_name);
+
+gint file_parser_register(const gchar *name, const gchar **extensions, FileType type, FileParserFunc *func);
+
+void file_parser_init_all(void);
+
+
+#endif	/* FILE_H */
+
+/* vim: set ts=8 sw=4 et: */
+/* vim600: set fdm=marker fdc=3: */
