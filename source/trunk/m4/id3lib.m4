@@ -27,10 +27,15 @@ AC_DEFUN([ID3LIB_CHECK], [
         succeeded=yes
     ], [
         succeeded=no
+    ], [
+        succeeded=cross
     ])
 
     if test $succeeded = yes; then
       AC_MSG_RESULT([yes])
+      ifelse([$2], , :, [$2])
+    elif test $succeeded = cross; then
+      AC_MSG_RESULT([cross-compiling, assumed ok])
       ifelse([$2], , :, [$2])
     else
       AC_MSG_RESULT([no])
