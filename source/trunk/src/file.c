@@ -33,7 +33,7 @@ static FileParser * file_parser_get_by_extension(const gchar *extension);
 /**
  * Return a pointer to the extension part of an UTF-8 enconded filename.
  */
-static inline G_CONST_RETURN gchar *
+G_INLINE_FUNC G_CONST_RETURN gchar *
 get_file_extension(const gchar *file_name)
 {
     const char *p;

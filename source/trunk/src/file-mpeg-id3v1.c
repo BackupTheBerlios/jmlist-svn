@@ -29,7 +29,7 @@ struct ID3v1Tag_struct {
 ID3v1Tag;
 
 
-static inline gchar *
+G_INLINE_FUNC gchar *
 parse_field(gchar *field, gsize sz)
 {
     gchar buffer[256] = "";

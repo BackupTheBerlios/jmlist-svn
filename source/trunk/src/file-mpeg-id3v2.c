@@ -49,7 +49,7 @@ id3v2_fields[] = {
 };
 
 
-static inline glong
+G_INLINE_FUNC glong
 check_header(ID3v2Header header)
 {
     if (header.id[0] != 'I' || header.id[1] != 'D' || header.id[2] != '3')
@@ -66,7 +66,7 @@ check_header(ID3v2Header header)
 }
 
 
-static inline const gchar *
+G_INLINE_FUNC G_CONST_RETURN gchar *
 parse_genre(const gchar *str)
 {
     const gchar *s;

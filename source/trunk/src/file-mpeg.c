@@ -225,7 +225,7 @@ mpeg_init(void)
 
 /* decode_header(hdr, mpeg) {{{ */
 
-static inline gboolean
+G_INLINE_FUNC gboolean
 decode_header(guint32 hdr, MPEGInfo *mpeg)
 {
     int tmp_version, tmp_layer, tmp_bitrate, tmp_sampling;
@@ -303,7 +303,7 @@ decode_header(guint32 hdr, MPEGInfo *mpeg)
 
 /* xing_decode(hdr, xing) {{{ */
 
-static inline gboolean
+G_INLINE_FUNC gboolean
 xing_decode(const guchar *fhdr, const MPEGInfo *mpeg, XingInfo *xing)
 {
     static const gint offset[MPEG_N_VERSIONS][MPEG_N_MODES] = {
