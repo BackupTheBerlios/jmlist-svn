@@ -71,14 +71,14 @@ vorbis_init(void)
 
 gboolean
 vorbis_proc(xmlNodePtr file_node,
-            FILE *fp,
+            FILE **fp,
             guint32 *length)
 {
     OggVorbis_File file;
     gint link, i;
     guint32 local_length = 0;
 
-    if (ov_open(fp, &file, NULL, 0) != 0)
+    if (ov_open(*fp, &file, NULL, 0) != 0)
         return FALSE;
 
     for (link = 0; link < file.links; link++) {
@@ -136,6 +136,8 @@ vorbis_proc(xmlNodePtr file_node,
     }
 
     ov_clear(&file);
+    *fp = NULL;         /* file is closed in ov_clear() */
+
     return FALSE;
 }
 

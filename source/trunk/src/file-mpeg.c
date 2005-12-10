@@ -289,7 +289,9 @@ decode_header(guint32 hdr, MPEGInfo *mpeg)
             mpeg->padding - 4;
         break;
 
-    default: break;     /* avoid GCC warnings */
+    default:
+        mpeg->framesize = 0;
+        break;     /* avoid GCC warnings */
     }
 
     if (mpeg->framesize > MPEG_MAX_FRAME_SIZE)
@@ -359,7 +361,7 @@ xing_decode(const guchar *fhdr, const MPEGInfo *mpeg, XingInfo *xing)
 
 gboolean
 mpeg_proc(xmlNodePtr file_node,
-          FILE *fp,
+          FILE **fp,
           guint32 *length)
 {
     gint skid = 1048576;
@@ -373,26 +375,26 @@ mpeg_proc(xmlNodePtr file_node,
 
     /* find file size */
 #if HAVE_FSEEKO
-    fseeko(fp, 0, SEEK_END);
-    file_size = ftello(fp);
+    fseeko(*fp, 0, SEEK_END);
+    file_size = ftello(*fp);
 #else
-    fseek(fp, 0, SEEK_END);
-    file_size = ftell(fp);
+    fseek(*fp, 0, SEEK_END);
+    file_size = ftell(*fp);
 #endif
 
 
     /* check for a possible ID3v2 tag */
-    id3v2_node = id3v2_parse(fp);
+    id3v2_node = id3v2_parse(*fp);
 
     /* get stream size (discount id3 tags) */
 #if HAVE_FSEEKO
-    stream_size = file_size - ftello(fp);
+    stream_size = file_size - ftello(*fp);
 #else
-    stream_size = file_size - ftell(fp);
+    stream_size = file_size - ftell(*fp);
 #endif
 
     /* read and parse the MPEG header */
-    if (fread(&hdr, sizeof hdr, 1, fp) != 1) {
+    if (fread(&hdr, sizeof hdr, 1, *fp) != 1) {
         if (id3v2_node != NULL)
             xmlFreeNode(id3v2_node);
 
@@ -408,7 +410,7 @@ mpeg_proc(xmlNodePtr file_node,
          * file with a mp3 extension. We stop searching for mpeg header if
          * we skid for more than 1MB.
          */
-        if (--skid <= 0 || fread(&tmp_char, 1, 1, fp) != 1) {
+        if (--skid <= 0 || fread(&tmp_char, 1, 1, *fp) != 1) {
             if (id3v2_node != NULL)
                 xmlFreeNode(id3v2_node);
 
@@ -436,9 +438,9 @@ mpeg_proc(xmlNodePtr file_node,
     mpeg.frames = 0;
     mpeg.length = 0;
 
-    if (fread(fhdr, mpeg.framesize, 1, fp) == 1) {
+    if (fread(fhdr, mpeg.framesize, 1, *fp) == 1) {
         /* check for a Xing header (used on VBR streams) */
-        XingInfo xing;
+        XingInfo xing = { 0 };
         gdouble tpf = compute_tpf(&mpeg);
 
         if (xing_decode(fhdr, &mpeg, &xing)) {
@@ -455,7 +457,7 @@ mpeg_proc(xmlNodePtr file_node,
         }
 
         /* parse ID3v1 tag */
-        if ((id3_node = id3v1_parse(fp)) != NULL) {
+        if ((id3_node = id3v1_parse(*fp)) != NULL) {
             xmlAddChild(audio_stream_node, id3_node);
             stream_size -= ID3V1_TAG_LENGTH;
         }

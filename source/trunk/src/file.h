@@ -26,7 +26,7 @@ enum FileType_enum {
 FileType;
 
 
-typedef gboolean FileParserFunc(xmlNodePtr file_node, FILE *fp, guint32 *length);
+typedef gboolean FileParserFunc(xmlNodePtr file_node, FILE **fp, guint32 *length);
 
 
 extern xmlNodePtr       file_proc(const gchar *real_path, const gchar *file_name, DirAccumData *accum);

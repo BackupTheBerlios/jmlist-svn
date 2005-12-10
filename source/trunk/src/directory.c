@@ -25,7 +25,7 @@
  *
  * \param real_path Real path to the directory.
  * \param dir_name Directory name, the last component of its path.
- * \param accum Parameter to add accumulated size/length data.
+ * \param parent_accum Parameter to add accumulated size/length data.
  * \returns A newly allocated xmlNodePtr.
  */
 xmlNodePtr

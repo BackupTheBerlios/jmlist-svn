@@ -51,6 +51,7 @@ file_proc(const gchar *real_path,
     xmlNodePtr file_node = NULL;
 
     /* get UTF-8 encoded filename and extension */
+    /* BUG: g_filename_to_utf8() may return NULL */
     file_name_utf8 = g_filename_to_utf8(file_name, -1, NULL, NULL, NULL);
     file_extension = filename_get_extension(file_name_utf8);
 
@@ -86,7 +87,11 @@ file_proc(const gchar *real_path,
 
             /* parse (or at least try to) the file */
             rewind(fp);
-            parser->func(file_node, fp, &accum->length_in_ms);
+            parser->func(file_node, &fp, &accum->length_in_ms);
+
+            /* close file */
+            if (fp != NULL)
+                fclose(fp);
         }
         else {                          /* fopen() returned NULL */
             xmlNodePtr comment = xmlNewComment("error opening file");

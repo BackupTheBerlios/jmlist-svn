@@ -19,7 +19,7 @@
 
 
 extern void             vorbis_init(void);
-extern gboolean         vorbis_proc(xmlNodePtr file_node, FILE *fp, guint32 *length);
+extern gboolean         vorbis_proc(xmlNodePtr file_node, FILE **fp, guint32 *length);
 
 
 #endif	/* FILE_VORBIS_H */
