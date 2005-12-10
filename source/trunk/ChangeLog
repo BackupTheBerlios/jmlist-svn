@@ -1,18 +1,26 @@
 ChangeLog for jMList - Media file listing generator
 ===================================================
 
-** 2005 Apr  3 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Dec 10 - Juliano F. Ravasi <dev at juliano info>
+   * directory.c, file-mpeg.c, file-vorbis.c, file.c, main.c:
+      Properly close files.
+
+   * (everything):
+      Author name change.
+
+** 2005 Apr  3 - Juliano F. Ravasi <dev at juliano info>
    * configure.ac, file.c, main.c, file-mpeg.c:
       Large file support.
 
    * directory.c, file.c, file-mpeg.c, file-vorbis.c, main.c:
       Accumulative size and length for directories.
 
+
 [ Version 0.1.0 ]
-** 2005 Mar 26 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Mar 26 - Juliano F. Ravasi <dev at juliano info>
    ### Version 0.1.0 released.
 
-** 2005 Feb 22 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Feb 22 - Juliano F. Ravasi <dev at juliano info>
    * configure.ac, m4/ogg.m4, m4/vorbis.m4:
       Added checks for libogg and libvorbis.
 
@@ -27,7 +35,7 @@ ChangeLog for jMList - Media file listing generator
 
 
 [ Version 0.0.2 ]
-** 2005 Feb 20 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Feb 20 - Juliano F. Ravasi <dev at juliano info>
    * style.c, main.c:
       Style engine implemented. New options --style and --list-styles. The
       current active stylesheet can also define its own command-line
@@ -39,7 +47,7 @@ ChangeLog for jMList - Media file listing generator
 
    ### Version 0.0.2 released (repository only).
 
-** 2005 Feb 19 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Feb 19 - Juliano F. Ravasi <dev at juliano info>
    * configure.ac, main.c:
       Added URL to project metadata, to the output of --version and to the
       generated XML output (to be used on stylesheets).
@@ -55,7 +63,7 @@ ChangeLog for jMList - Media file listing generator
    * main.c, file.c, directory.c:
       Added --verbose option.
 
-** 2005 Feb 16 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Feb 16 - Juliano F. Ravasi <dev at juliano info>
    * file.c, file-mpeg.c, file-mpeg-id3v1.c, file-mpeg-id3v2.c:
       Using glib way for declaring inline functions.
 
@@ -65,7 +73,7 @@ ChangeLog for jMList - Media file listing generator
 
 
 [ Version 0.0.1 ]
-** 2005 Feb 12 - Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+** 2005 Feb 12 - Juliano F. Ravasi <dev at juliano info>
    ### Initial 0.0.1 release.
 
 

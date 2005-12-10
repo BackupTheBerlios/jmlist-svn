@@ -2,10 +2,10 @@
 <!--
 ================================================================================
  jMList - Media file listing generator
- http://www.juliano.info/projects/jMList/
+ http://juliano.info/projects/jMList/
 ================================================================================
 
-   Author: Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   Author: Juliano F. Ravasi <dev at juliano info>
   License: GNU General Public License
 -->
 <style-info>
@@ -13,7 +13,7 @@
     <name>xhtml-collapsible</name>
     <title>XHTML Collapsible Tree</title>
     <version>0.2</version>
-    <author>Juliano Ravasi Ferraz</author>
+    <author>Juliano F. Ravasi</author>
     <output>xhtml</output>
     <descr>This stylesheet can be used to generate a XHTML page listing your
 media library in a collapsible tree. Files and directories are listed

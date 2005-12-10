@@ -6,21 +6,20 @@ AC_PREREQ(2.59)
 ### Version information.
 define(JMLIST_MAJOR_VERSION, 0)
 define(JMLIST_MINOR_VERSION, 1)
-define(JMLIST_MICRO_VERSION, 0)
+define(JMLIST_MICRO_VERSION, 1)
 define(JMLIST_URL, "http://jmlist.berlios.de/")
 
 
 ### Autoconf init.
-AC_INIT([jMList], 
+AC_INIT([jMList],
 	[JMLIST_MAJOR_VERSION.JMLIST_MINOR_VERSION.JMLIST_MICRO_VERSION],
-	[jferraz at users sourceforge net], [jmlist])
+	[dev at juliano info], [jmlist])
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADER([config.h])
 AC_CONFIG_AUX_DIR([admin])
 AC_CONFIG_LIBOBJ_DIR([lib])
 AC_CANONICAL_SYSTEM
 AM_INIT_AUTOMAKE
-AM_MAINTAINER_MODE
 
 
 ### URL and Versioning.
@@ -88,10 +87,6 @@ if test _$vorbis_support != _yes; then AC_MSG_WARN([OGG Vorbis support disabled.
 
 AM_CONDITIONAL([HAVE_LIBOGG], [test _$ogg_support = _yes])
 AM_CONDITIONAL([HAVE_LIBVORBIS], [test _$vorbis_support = _yes])
-
-
-### GCC defaults
-CFLAGS="$CFLAGS -Wall"
 
 
 ### Checks for header files.

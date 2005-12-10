@@ -2,10 +2,10 @@
 <!--
 ================================================================================
  jMList - Media file listing generator
- http://www.juliano.info/projects/jMList/
+ http://juliano.info/projects/jMList/
 ================================================================================
 
-   Author: Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+   Author: Juliano F. Ravasi <dev at juliano info>
   License: GNU General Public License
 
  Stylesheet used to generate a plain-text and tabular list of song files.

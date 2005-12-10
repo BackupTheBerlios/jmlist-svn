@@ -1,13 +1,13 @@
 /******************************************************************************
  * jMList                                                                     *
  * Media file listing generator                                               *
- * http://www.juliano.info/projects/jMList/                                   *
+ * http://juliano.info/projects/jMList/                                       *
  ******************************************************************************
- *   Author: Juliano Ravasi Ferraz <jferraz at users sourceforge net>         *
+ *   Author: Juliano F. Ravasi <dev at juliano info>                          *
  * Language: ANSI C (ISO/IEC 9899:1990)                                       *
  *  License: GNU General Public License                                       *
  ******************************************************************************
- * Copyright (C) 2005 Juliano Ravasi Ferraz                                   *
+ * Copyright (C) 2005 Juliano F. Ravasi                                       *
  ******************************************************************************/
 
 /** \file **/
@@ -120,7 +120,7 @@ main(int argc, char **argv)
         case OPT_VERSION:
             g_print(PACKAGE_STRING "\n");
             g_print(PACKAGE_URL "\n");
-            g_print("Copyright (C) 2004 - Juliano Ravasi Ferraz\n");
+            g_print("Copyright (C) 2005 - Juliano F. Ravasi\n");
             exit(EXIT_SUCCESS);
 
         case OPT_STYLE:

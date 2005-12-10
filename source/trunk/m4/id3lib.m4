@@ -1,5 +1,5 @@
 dnl aclocal macro file for id3lib
-dnl -- Juliano Ravasi Ferraz <jferraz at users sourceforge net>
+dnl -- Juliano F. Ravasi <dev at juliano info>
 
 dnl ID3LIB_CHECK(MIN-VERSION [, ACTION_IF_FOUND [, ACTION-IF-NOT-FOUND]])
 dnl checks for installed id3lib and sets ID3LIB_CFLAGS and ID3LIB_LIBS
